@@ -1,0 +1,108 @@
+{
+  "id": 2,
+  "slug": "data-collection",
+  "title": "Module 2 – Data Collection",
+  "order": 2,
+
+  "xpRewards": {
+    "novice": 50,
+    "standard": 100,
+    "expert": 200
+  },
+
+  "statRequirements": {
+    "novice": { "intellect": 0, "wisdom": 0, "discipline": 0 },
+    "standard": { "intellect": 1, "wisdom": 1, "discipline": 0 },
+    "expert": { "intellect": 2, "wisdom": 2, "discipline": 1 }
+  },
+
+  "unlock": {
+    "requiresModuleIds": [1],
+    "minHeroLevel": 2
+  },
+
+  "difficultyLabels": {
+    "novice": "Observer",
+    "standard": "Recorder",
+    "expert": "Analyst"
+  },
+
+  "summaries": {
+    "novice": "Learn why data collection matters and how behavior is measured objectively.",
+    "standard": "Differentiate between continuous, discontinuous, and indirect measurement systems.",
+    "expert": "Select and interpret measurement systems and graphs to guide treatment decisions."
+  },
+
+  "flashcardXP": {
+    "novice": 10,
+    "standard": 20,
+    "expert": 50,
+    "perCard": {
+      "qa": 10,
+      "fill": 15,
+      "mc": 20,
+      "scenario": 30
+    }
+  },
+
+  "flashcardUnlock": {
+    "novice": { "level": 1 },
+    "standard": {
+      "level": 2,
+      "stats": { "intellect": 1, "wisdom": 1 }
+    },
+    "expert": {
+      "level": 3,
+      "stats": { "intellect": 2, "wisdom": 2, "discipline": 1 }
+    }
+  },
+
+  "flashcards": {
+    "novice": [
+      { "id": "2-N1", "type": "qa", "question": "What does frequency measure?", "answer": "How many times a behavior occurs." },
+      { "id": "2-N2", "type": "fill", "question": "_______ is how long a behavior lasts from start to finish.", "answer": "Duration." },
+      { "id": "2-N3", "type": "qa", "question": "What is latency?", "answer": "The time between the SD and the start of the behavior." },
+      { "id": "2-N4", "type": "qa", "question": "Does continuous measurement capture every instance or samples?", "answer": "Every instance." },
+      { "id": "2-N5", "type": "fill", "question": "Whole-interval recording tends to ______ behavior.", "answer": "underestimate" },
+      { "id": "2-N6", "type": "fill", "question": "Partial-interval recording tends to ______ behavior.", "answer": "overestimate" },
+      { "id": "2-N7", "type": "qa", "question": "Momentary time sampling checks behavior at what point?", "answer": "At the end of the interval." },
+      { "id": "2-N8", "type": "qa", "question": "Is an interview direct or indirect measurement?", "answer": "Indirect." },
+      { "id": "2-N9", "type": "qa", "question": "Which graph is most common in ABA?", "answer": "Line graph." },
+      { "id": "2-N10", "type": "qa", "question": "What does variability mean on a graph?", "answer": "How much data move up and down across sessions." }
+    ],
+
+    "standard": [
+      { "id": "2-S1", "type": "mc", "question": "Which is the BEST example of rate?", "options": ["Hits per day", "Duration of tantrum", "Hits per minute", "End-interval check"], "correctOptionIndex": 2 },
+      { "id": "2-S2", "type": "mc", "question": "Which is a continuous measurement?", "options": ["Whole interval", "MTS", "Partial interval", "Duration"], "correctOptionIndex": 3 },
+      { "id": "2-S3", "type": "mc", "question": "Whole-interval is best when:", "options": ["Any occurrence", "End of interval", "Entire interval", "Count all responses"], "correctOptionIndex": 2 },
+      { "id": "2-S4", "type": "mc", "question": "Momentary time sampling checks:", "options": ["Anytime", "All interval", "Moment interval ends", "Every response"], "correctOptionIndex": 2 },
+      { "id": "2-S5", "type": "mc", "question": "Which is an INDIRECT measure?", "options": ["Frequency", "Interview", "Duration", "Partial interval"], "correctOptionIndex": 1 },
+      { "id": "2-S6", "type": "mc", "question": "Scatter plot shows:", "options": ["Accumulation", "Time-of-day patterns", "Comparisons", "Average"], "correctOptionIndex": 1 },
+      { "id": "2-S7", "type": "mc", "question": "Trend shows:", "options": ["Variability", "Level", "Up/down/stable", "Scale"], "correctOptionIndex": 2 },
+      { "id": "2-S8", "type": "mc", "question": "Permanent product means:", "options": ["During session", "Interval only", "Lasting result of behavior", "Indirect interview"], "correctOptionIndex": 2 },
+      { "id": "2-S9", "type": "mc", "question": "Latency is appropriate when:", "options": ["Start speed", "Work rate", "Duration", "Interval check"], "correctOptionIndex": 0 },
+      { "id": "2-S10", "type": "mc", "question": "Which is TRUE?", "options": ["Continuous more accurate", "Discontinuous more accurate", "Same accuracy", "Discontinuous never uses intervals"], "correctOptionIndex": 0 }
+    ],
+
+    "expert": [
+      { "id": "2-E1", "type": "scenario", "question": "Busy classroom, need estimate of on-task behavior. What system?", "answer": "Whole-interval or partial-interval.", "explanation": "Used when continuous observation is impractical." },
+      { "id": "2-E2", "type": "scenario", "question": "BCBA wants morning vs afternoon aggression patterns. What graph?", "answer": "Scatter plot.", "explanation": "Shows time-based patterns." },
+      { "id": "2-E3", "type": "scenario", "question": "Parent says 'tantrums all day'. How verify?", "answer": "Duration and frequency with a line graph.", "explanation": "Reveals real patterns over time." },
+      { "id": "2-E4", "type": "scenario", "question": "Self-injury hundreds per day. Best measurement?", "answer": "Partial-interval or MTS.", "explanation": "Continuous measurement may be impractical." },
+      { "id": "2-E5", "type": "scenario", "question": "High variability, no trend. What does it suggest?", "answer": "Intervention inconsistency or poor effectiveness.", "explanation": "Review fidelity and modify plan." },
+      { "id": "2-E6", "type": "scenario", "question": "Why not rely on teacher impressions alone?", "answer": "They are subjective and biased.", "explanation": "ABA requires objective, measurable data." },
+      { "id": "2-E7", "type": "scenario", "question": "Whole-interval shows low on-task %. Why clarify?", "answer": "Whole-interval underestimates behavior.", "explanation": "Requires behavior throughout the entire interval." },
+      { "id": "2-E8", "type": "scenario", "question": "Measuring completed worksheets is an example of?", "answer": "Permanent product.", "explanation": "Measurement based on outcome, not observation." },
+      { "id": "2-E9", "type": "scenario", "question": "Latency vs duration measure?", "answer": "Latency = time to start; duration = length of behavior.", "explanation": "They answer different timing questions." },
+      { "id": "2-E10", "type": "scenario", "question": "Two RBTs get different data. Why?", "answer": "Poor operational definition or inconsistent procedures.", "explanation": "Clear definitions improve reliability." }
+    ]
+  },
+
+  "sections": [
+    { "id": "2.1", "title": "Why Data Collection Matters", "xp": 25, "statRequirements": { "intellect": 0, "wisdom": 0, "discipline": 0 }, "content": "Data collection shows whether behavior is changing and guides decisions." },
+    { "id": "2.2", "title": "Continuous Measurement", "xp": 35, "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 0 }, "content": "Frequency, duration, rate, latency, and interresponse time." },
+    { "id": "2.3", "title": "Discontinuous Measurement", "xp": 35, "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 }, "content": "Whole-interval, partial-interval, and momentary time sampling." },
+    { "id": "2.4", "title": "Indirect Measurement", "xp": 30, "statRequirements": { "intellect": 2, "wisdom": 1, "discipline": 1 }, "content": "Interviews, questionnaires, and permanent products." },
+    { "id": "2.5", "title": "Graphing & Interpretation", "xp": 40, "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 1 }, "content": "Line graphs, scatter plots, trend, level, and variability." }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "id": 1,
+  "slug": "3-term-contingency",
+  "title": "Module 1 – 3-Term Contingency",
+  "order": 1,
+
+  "xpRewards": {
+    "novice": 50,
+    "standard": 100,
+    "expert": 200
+  },
+
+  "statRequirements": {
+    "novice": { "intellect": 0, "wisdom": 0, "discipline": 0 },
+    "standard": { "intellect": 1, "wisdom": 1, "discipline": 0 },
+    "expert": { "intellect": 2, "wisdom": 2, "discipline": 1 }
+  },
+
+  "unlock": {
+    "requiresModuleIds": [],
+    "minHeroLevel": 1
+  },
+
+  "difficultyLabels": {
+    "novice": "Novice",
+    "standard": "Student",
+    "expert": "Tactician"
+  },
+
+  "summaries": {
+    "novice": "Learn the foundations of the 3-term contingency and basic ABA concepts.",
+    "standard": "Analyze antecedents, consequences, and behavior function.",
+    "expert": "Apply ABC analysis to real-world scenarios using function-based logic."
+  },
+
+  "flashcardXP": {
+    "novice": 10,
+    "standard": 20,
+    "expert": 50,
+    "perCard": {
+      "qa": 10,
+      "fill": 15,
+      "mc": 20,
+      "scenario": 30
+    }
+  },
+
+  "flashcardUnlock": {
+    "novice": {
+      "level": 1
+    },
+    "standard": {
+      "level": 2,
+      "stats": { "intellect": 1, "wisdom": 1 }
+    },
+    "expert": {
+      "level": 3,
+      "stats": { "intellect": 2, "wisdom": 2, "discipline": 1 }
+    }
+  },
+
+  "flashcards": {
+    "novice": [
+      { "id": "N1", "type": "qa", "question": "What are the three parts of the 3-term contingency?", "answer": "Antecedent → Behavior → Consequence" },
+      { "id": "N2", "type": "fill", "question": "The ______ happens before the behavior.", "answer": "antecedent" },
+      { "id": "N3", "type": "qa", "question": "What must a behavior definition be?", "answer": "Objective, observable, measurable" },
+      { "id": "N4", "type": "fill", "question": "A consequence that increases behavior is called ______.", "answer": "reinforcement" },
+      { "id": "N5", "type": "qa", "question": "Name one function of behavior.", "answer": "Escape, Attention, Tangible, or Sensory" },
+      { "id": "N6", "type": "qa", "question": "What is the purpose of ABC data?", "answer": "To identify patterns that suggest behavior function." },
+      { "id": "N7", "type": "fill", "question": "SD stands for ______ ______.", "answer": "discriminative stimulus" },
+      { "id": "N8", "type": "qa", "question": "What does a consequence affect?", "answer": "The future likelihood of the behavior" },
+      { "id": "N9", "type": "fill", "question": "Removing a stimulus to increase behavior is ______ reinforcement.", "answer": "negative" },
+      { "id": "N10", "type": "qa", "question": "What is an MO?", "answer": "A motivating operation that changes the value of a reinforcer." }
+    ],
+
+    "standard": [
+      { "id": "S1", "type": "mc", "question": "Which is an antecedent?", "options": ["A reward", "A task instruction", "A tantrum", "A timeout"], "correctOptionIndex": 1 },
+      { "id": "S2", "type": "mc", "question": "Which is NOT a function of behavior?", "options": ["Escape", "Attention", "Stimulation", "Confusion"], "correctOptionIndex": 3 },
+      { "id": "S3", "type": "mc", "question": "Reinforcement always ______.", "options": ["Increases behavior", "Decreases behavior", "Stops behavior", "Has no effect"], "correctOptionIndex": 0 },
+      { "id": "S4", "type": "mc", "question": "Which is an example of a consequence?", "options": ["Instruction", "Location", "Praise", "Client’s age"], "correctOptionIndex": 2 },
+      { "id": "S5", "type": "mc", "question": "Which is a correct behavior definition?", "options": ["He felt frustrated", "She was angry", "He banged the table three times", "She looked upset"], "correctOptionIndex": 2 },
+      { "id": "S6", "type": "mc", "question": "A child screams to escape cleaning. Function?", "options": ["Attention", "Escape", "Tangible", "Sensory"], "correctOptionIndex": 1 },
+      { "id": "S7", "type": "mc", "question": "What is an SD?", "options": ["A punishment", "A signal that reinforcement is available", "A sensory behavior", "A reinforcer"], "correctOptionIndex": 1 },
+      { "id": "S8", "type": "mc", "question": "Which consequence reduces future behavior?", "options": ["Reinforcement", "Shaping", "Punishment", "Prompting"], "correctOptionIndex": 2 },
+      { "id": "S9", "type": "mc", "question": "Extinction means:", "options": ["Stopping reinforcement", "Punishing behavior", "Reinforcing new behavior", "Ignoring all behavior"], "correctOptionIndex": 0 },
+      { "id": "S10", "type": "mc", "question": "ABC stands for:", "options": ["Antecedent–Behavior–Consequence", "Action–Behavior–Control", "Antecedent–Baseline–Condition", "Analysis–Behavior–Condition"], "correctOptionIndex": 0 }
+    ],
+
+    "expert": [
+      { "id": "E1", "type": "scenario", "question": "Child cries → gets toy back. Function?", "answer": "Tangible", "explanation": "Crying gained access to item." },
+      { "id": "E2", "type": "scenario", "question": "Learner flops → work removed. Process?", "answer": "Negative reinforcement (escape).", "explanation": "Task removal strengthens behavior." },
+      { "id": "E3", "type": "scenario", "question": "Learner only responds to pointing. Issue?", "answer": "Stimulus control transfer failure.", "explanation": "Prompt controls behavior, not SD." },
+      { "id": "E4", "type": "scenario", "question": "RBT writes 'He was upset'. Problem?", "answer": "Not objective or measurable.", "explanation": "Must describe observable behavior." },
+      { "id": "E5", "type": "scenario", "question": "Child screams → gets iPad. Why behavior increases?", "answer": "Positive reinforcement.", "explanation": "Behavior resulted in tangible gain." },
+      { "id": "E6", "type": "scenario", "question": "Behavior occurs during hard tasks. What variable is involved?", "answer": "MO (value of escape).", "explanation": "Hard tasks increase escape motivation." },
+      { "id": "E7", "type": "scenario", "question": "Learner calls all animals 'dog'. What is this?", "answer": "Overgeneralization.", "explanation": "Generalization without discrimination." },
+      { "id": "E8", "type": "scenario", "question": "Tantrum decreases after reinforcement stops. Procedure?", "answer": "Extinction.", "explanation": "Reinforcement withheld." },
+      { "id": "E9", "type": "scenario", "question": "Behavior spikes once extinction begins. What is this?", "answer": "Extinction burst.", "explanation": "Temporary increase in behavior." },
+      { "id": "E10", "type": "scenario", "question": "Teacher calls name → child looks → praise. What strengthened behavior?", "answer": "Positive reinforcement.", "explanation": "Praise increased eye-contact behavior." }
+    ]
+  },
+
+  "sections": [
+    { "id": "1.1", "title": "Overview of ABC", "xp": 25, "statRequirements": { "intellect": 0, "wisdom": 0, "discipline": 0 } },
+    { "id": "1.2", "title": "Antecedents & Stimulus Control", "xp": 30, "statRequirements": { "intellect": 1, "wisdom": 0, "discipline": 0 } },
+    { "id": "1.3", "title": "Defining Behavior", "xp": 30, "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 0 } },
+    { "id": "1.4", "title": "Consequences", "xp": 35, "statRequirements": { "intellect": 2, "wisdom": 1, "discipline": 1 } },
+    { "id": "1.5", "title": "Functions of Behavior", "xp": 35, "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 1 } },
+    { "id": "1.6", "title": "Putting It All Together", "xp": 45, "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 } }
+  ]
+}

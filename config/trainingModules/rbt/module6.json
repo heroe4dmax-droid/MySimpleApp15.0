@@ -1,0 +1,131 @@
+{
+  "id": 6,
+  "slug": "ethics",
+  "title": "Module 6 – Ethics & Professional Responsibilities",
+  "order": 6,
+
+  "xpRewards": {
+    "novice": 70,
+    "standard": 130,
+    "expert": 240
+  },
+
+  "statRequirements": {
+    "novice": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+    "standard": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+    "expert": { "intellect": 3, "wisdom": 3, "discipline": 3 }
+  },
+
+  "unlock": {
+    "requiresModuleIds": [1, 2, 3, 4, 5],
+    "minHeroLevel": 6
+  },
+
+  "difficultyLabels": {
+    "novice": "Code Reader",
+    "standard": "Ethics Practitioner",
+    "expert": "Guardian of Ethics"
+  },
+
+  "summaries": {
+    "novice": "Learn the ethical responsibilities and professional boundaries required of an RBT.",
+    "standard": "Apply ethics rules related to confidentiality, reporting, supervision, and professional conduct.",
+    "expert": "Analyze complex ethical scenarios and respond according to the BACB ethics code and supervision requirements."
+  },
+
+  "flashcardXP": {
+    "novice": 10,
+    "standard": 20,
+    "expert": 50,
+    "perCard": {
+      "qa": 10,
+      "fill": 15,
+      "mc": 20,
+      "scenario": 30
+    }
+  },
+
+  "flashcardUnlock": {
+    "novice": { "level": 1 },
+    "standard": {
+      "level": 2,
+      "stats": { "intellect": 2, "wisdom": 2 }
+    },
+    "expert": {
+      "level": 3,
+      "stats": { "intellect": 3, "wisdom": 3, "discipline": 3 }
+    }
+  },
+
+  "flashcards": {
+    "novice": [
+      { "id": "6-N1", "type": "qa", "question": "What is the primary responsibility of an RBT?", "answer": "To implement behavior plans as written and ensure client safety." },
+      { "id": "6-N2", "type": "fill", "question": "RBTs must report ______ incidents of suspected abuse.", "answer": "all" },
+      { "id": "6-N3", "type": "qa", "question": "True or False: An RBT may accept a $20 gift once per year.", "answer": "False — gifts over $10 are prohibited." },
+      { "id": "6-N4", "type": "qa", "question": "Who creates or modifies behavior plans?", "answer": "The BCBA." },
+      { "id": "6-N5", "type": "qa", "question": "What should an RBT do when unsure about a procedure?", "answer": "Ask the supervising BCBA for clarification." },
+      { "id": "6-N6", "type": "fill", "question": "RBTs must maintain client ______ at all times.", "answer": "confidentiality" },
+      { "id": "6-N7", "type": "qa", "question": "Who analyzes data collected by the RBT?", "answer": "The BCBA." },
+      { "id": "6-N8", "type": "qa", "question": "What should an RBT do if a client is injured?", "answer": "Report immediately and follow emergency procedures." },
+      { "id": "6-N9", "type": "qa", "question": "True or False: Dual relationships are allowed if comfortable.", "answer": "False." },
+      { "id": "6-N10", "type": "fill", "question": "RBTs must collect data honestly and ______.", "answer": "accurately" }
+    ],
+
+    "standard": [
+      { "id": "6-S1", "type": "mc", "question": "Which must be reported to the BCBA?", "options": ["Program ideas", "Client progress only", "Medication changes", "Scheduling issues"], "correctOptionIndex": 2 },
+      { "id": "6-S2", "type": "mc", "question": "Why must RBTs avoid dual relationships?", "options": ["Billing issues", "Objectivity concerns", "Reinforcement problems", "Scheduling conflicts"], "correctOptionIndex": 1 },
+      { "id": "6-S3", "type": "mc", "question": "Who should be notified if an RBT receives a DUI?", "options": ["BCBA", "BACB", "DCF", "Insurance"], "correctOptionIndex": 1 },
+      { "id": "6-S4", "type": "mc", "question": "Who is responsible for creating behavior plans?", "options": ["RBT", "BCBA", "Parent", "School"], "correctOptionIndex": 1 },
+      { "id": "6-S5", "type": "mc", "question": "What role does the RBT have in assessments?", "options": ["Run FA", "Modify tools", "Assist with data collection", "Design goals"], "correctOptionIndex": 2 },
+      { "id": "6-S6", "type": "mc", "question": "Confidentiality may be broken when:", "options": ["Parents ask", "Supervisor asks", "Risk of harm or abuse", "Client is absent"], "correctOptionIndex": 2 },
+      { "id": "6-S7", "type": "mc", "question": "Maximum acceptable gift value?", "options": ["$50", "$20", "$10", "No limit"], "correctOptionIndex": 2 },
+      { "id": "6-S8", "type": "mc", "question": "Who decides if a crisis procedure is added?", "options": ["RBT", "Parent", "BCBA", "School"], "correctOptionIndex": 2 },
+      { "id": "6-S9", "type": "mc", "question": "If data is missed, the RBT should:", "options": ["Guess later", "Skip it", "Report honestly", "Delete data"], "correctOptionIndex": 2 },
+      { "id": "6-S10", "type": "mc", "question": "Failing to follow a written plan is:", "options": ["Minor", "Allowed once", "Ethical violation", "Preference error"], "correctOptionIndex": 2 }
+    ],
+
+    "expert": [
+      { "id": "6-E1", "type": "scenario", "question": "Parent asks you to babysit the client.", "answer": "Decline due to dual relationship", "explanation": "Dual relationships violate ethical boundaries." },
+      { "id": "6-E2", "type": "scenario", "question": "Client reports abuse at home.", "answer": "Report immediately to authorities and BCBA", "explanation": "Mandatory reporting overrides confidentiality." },
+      { "id": "6-E3", "type": "scenario", "question": "BCBA has not provided supervision.", "answer": "Request supervision", "explanation": "Supervision is an ethical requirement." },
+      { "id": "6-E4", "type": "scenario", "question": "Parent offers $40 gift card.", "answer": "Politely decline", "explanation": "Gifts over $10 are not allowed." },
+      { "id": "6-E5", "type": "scenario", "question": "Another RBT falsifies data.", "answer": "Report to BCBA", "explanation": "Data integrity is essential." },
+      { "id": "6-E6", "type": "scenario", "question": "Teacher requests confidential notes.", "answer": "Decline request", "explanation": "Confidentiality must be protected." },
+      { "id": "6-E7", "type": "scenario", "question": "Parent asks you to modify the plan.", "answer": "Refer to BCBA", "explanation": "Only BCBAs modify plans." },
+      { "id": "6-E8", "type": "scenario", "question": "Crisis plan ineffective during aggression.", "answer": "Ensure safety and contact BCBA", "explanation": "Follow plan and escalate appropriately." },
+      { "id": "6-E9", "type": "scenario", "question": "You suspect BCBA unethical behavior.", "answer": "Report to BACB", "explanation": "Ethics code requires reporting." },
+      { "id": "6-E10", "type": "scenario", "question": "You collected incorrect data.", "answer": "Report honestly and correct procedures", "explanation": "Transparency is required by ethics code." }
+    ]
+  },
+
+  "sections": [
+    {
+      "id": "6.1",
+      "title": "RBT Core Responsibilities",
+      "xp": 40,
+      "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+      "content": "RBTs implement plans, collect accurate data, maintain confidentiality, avoid dual relationships, and report important changes to the BCBA."
+    },
+    {
+      "id": "6.2",
+      "title": "BCBA Responsibilities",
+      "xp": 40,
+      "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+      "content": "BCBAs conduct assessments, design and modify programs, analyze data, and supervise RBTs."
+    },
+    {
+      "id": "6.3",
+      "title": "Confidentiality & Documentation",
+      "xp": 35,
+      "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 3 },
+      "content": "Client information must be protected, and documentation must be accurate, honest, and secure."
+    },
+    {
+      "id": "6.4",
+      "title": "Dual Relationships & Conflicts of Interest",
+      "xp": 35,
+      "statRequirements": { "intellect": 2, "wisdom": 3, "discipline": 3 },
+      "content": "Professionals must avoid dual relationships, inappropriate gifts, and conflicts of interest."
+    }
+  ]
+}

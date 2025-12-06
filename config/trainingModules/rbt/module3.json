@@ -1,0 +1,131 @@
+{
+  "id": 3,
+  "slug": "assessments",
+  "title": "Module 3 – Assessments",
+  "order": 3,
+
+  "xpRewards": {
+    "novice": 60,
+    "standard": 120,
+    "expert": 220
+  },
+
+  "statRequirements": {
+    "novice": { "intellect": 0, "wisdom": 0, "discipline": 0 },
+    "standard": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+    "expert": { "intellect": 2, "wisdom": 2, "discipline": 2 }
+  },
+
+  "unlock": {
+    "requiresModuleIds": [1, 2],
+    "minHeroLevel": 3
+  },
+
+  "difficultyLabels": {
+    "novice": "Scout",
+    "standard": "Investigator",
+    "expert": "Analyst"
+  },
+
+  "summaries": {
+    "novice": "Assessments identify why behaviors occur and what skills should be taught.",
+    "standard": "Use FBAs, preference assessments, ecological assessments, and curriculum-based tools to guide programming.",
+    "expert": "Integrate indirect and direct assessment data to design effective, individualized intervention and instruction."
+  },
+
+  "flashcardXP": {
+    "novice": 10,
+    "standard": 20,
+    "expert": 50,
+    "perCard": {
+      "qa": 10,
+      "fill": 15,
+      "mc": 20,
+      "scenario": 30
+    }
+  },
+
+  "flashcardUnlock": {
+    "novice": { "level": 1 },
+    "standard": {
+      "level": 2,
+      "stats": { "intellect": 1, "wisdom": 1, "discipline": 1 }
+    },
+    "expert": {
+      "level": 3,
+      "stats": { "intellect": 2, "wisdom": 2, "discipline": 2 }
+    }
+  },
+
+  "flashcards": {
+    "novice": [
+      { "id": "3-N1", "type": "qa", "question": "What does FBA stand for?", "answer": "Functional Behavior Assessment" },
+      { "id": "3-N2", "type": "fill", "question": "An FBA helps determine the ______ of a behavior.", "answer": "function" },
+      { "id": "3-N3", "type": "qa", "question": "Name one indirect assessment method.", "answer": "Interview, survey, or questionnaire" },
+      { "id": "3-N4", "type": "qa", "question": "Name one direct assessment method.", "answer": "ABC data collection" },
+      { "id": "3-N5", "type": "qa", "question": "What does a preference assessment identify?", "answer": "What the client finds reinforcing" },
+      { "id": "3-N6", "type": "qa", "question": "Free-operant assessments measure what?", "answer": "What the client chooses without demands" },
+      { "id": "3-N7", "type": "fill", "question": "MSWO stands for ______.", "answer": "Multiple Stimulus Without Replacement" },
+      { "id": "3-N8", "type": "qa", "question": "VB-MAPP is what type of assessment?", "answer": "A curriculum-based assessment" },
+      { "id": "3-N9", "type": "fill", "question": "Ecological assessments look at the ______.", "answer": "environment" },
+      { "id": "3-N10", "type": "fill", "question": "Paired-stimulus assessments present ______ at a time.", "answer": "two items" }
+    ],
+
+    "standard": [
+      { "id": "3-S1", "type": "mc", "question": "Which of the following is an indirect assessment?", "options": ["ABC Recording", "Interview", "Scatterplot", "Duration tracking"], "correctOptionIndex": 1 },
+      { "id": "3-S2", "type": "mc", "question": "What is the main purpose of a preference assessment?", "options": ["Diagnose ASD", "Identify reinforcers", "Measure frequency", "Determine mastery"], "correctOptionIndex": 1 },
+      { "id": "3-S3", "type": "mc", "question": "Which preference assessment involves continuous observation?", "options": ["Paired stimulus", "Single stimulus", "Free-operant", "MSW"], "correctOptionIndex": 2 },
+      { "id": "3-S4", "type": "mc", "question": "Which assessment tests conditions to determine behavior function?", "options": ["Skill assessment", "Ecological assessment", "Functional analysis", "Preference assessment"], "correctOptionIndex": 2 },
+      { "id": "3-S5", "type": "mc", "question": "VB-MAPP primarily measures:", "options": ["Motor skills", "Language & learning skills", "Adaptive behavior", "Parent satisfaction"], "correctOptionIndex": 1 },
+      { "id": "3-S6", "type": "mc", "question": "Curriculum-based assessments focus on:", "options": ["Interviews only", "Standardized norms", "Curriculum-based skill sequences", "Latency"], "correctOptionIndex": 2 },
+      { "id": "3-S7", "type": "mc", "question": "Paired-stimulus assessments require:", "options": ["One item", "Continuous observation", "Two items", "Functional analysis"], "correctOptionIndex": 2 },
+      { "id": "3-S8", "type": "mc", "question": "Ecological assessments examine:", "options": ["Only reinforcers", "Skill performance", "Environmental variables", "Parent opinions"], "correctOptionIndex": 2 },
+      { "id": "3-S9", "type": "mc", "question": "MSWO differs from MSW because:", "options": ["Items not replaced", "Only one item shown", "Indirect only", "Escape extinction required"], "correctOptionIndex": 0 },
+      { "id": "3-S10", "type": "mc", "question": "An RBT may assist in which FBA component?", "options": ["Running FA independently", "Writing the BRP", "Collecting ABC & preference data", "Interpreting results"], "correctOptionIndex": 2 }
+    ],
+
+    "expert": [
+      { "id": "3-E1", "type": "scenario", "question": "Screaming occurs after toy removal despite reports of escape. Function?", "answer": "Tangible", "explanation": "Direct ABC data outweighs indirect reports." },
+      { "id": "3-E2", "type": "scenario", "question": "Learner engages <5 seconds per item during free-operant assessment.", "answer": "Weak or low-value reinforcers", "explanation": "Engagement duration indicates preference strength." },
+      { "id": "3-E3", "type": "scenario", "question": "Paired-stimulus assessment shows one highly preferred item.", "answer": "Use as high-value reinforcer", "explanation": "Establishes preference hierarchy." },
+      { "id": "3-E4", "type": "scenario", "question": "ABC data contradicts interview claims. What guides decisions?", "answer": "Direct assessment data", "explanation": "Objective data drives treatment." },
+      { "id": "3-E5", "type": "scenario", "question": "Classroom is loud during group time per ecological assessment.", "answer": "Adjust environmental variables", "explanation": "Setting events influence behavior." },
+      { "id": "3-E6", "type": "scenario", "question": "VB-MAPP shows weak manding, strong listener skills.", "answer": "Increase mand training", "explanation": "Mands are core functional communication." },
+      { "id": "3-E7", "type": "scenario", "question": "Child prefers edibles in MSWO.", "answer": "Use edibles initially; condition other reinforcers", "explanation": "Preference strength guides selection." },
+      { "id": "3-E8", "type": "scenario", "question": "RBT identifies function using interview alone.", "answer": "Insufficient assessment", "explanation": "Indirect measures require direct validation." },
+      { "id": "3-E9", "type": "scenario", "question": "Hitting occurs after attention is removed.", "answer": "Attention", "explanation": "Behavior functions to regain attention." },
+      { "id": "3-E10", "type": "scenario", "question": "BCBA assigns RBT to run preference assessments.", "answer": "Appropriate under supervision", "explanation": "RBTs assist but do not interpret independently." }
+    ]
+  },
+
+  "sections": [
+    {
+      "id": "3.1",
+      "title": "Functional Behavior Assessment (FBA)",
+      "xp": 40,
+      "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+      "content": "FBAs determine why behaviors occur by combining indirect tools, direct ABC data, and BCBA-led functional analysis."
+    },
+    {
+      "id": "3.2",
+      "title": "Preference Assessments",
+      "xp": 35,
+      "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+      "content": "Preference assessments identify reinforcers through free-operant, single, paired, and MSW/MSWO formats."
+    },
+    {
+      "id": "3.3",
+      "title": "Ecological Assessments",
+      "xp": 30,
+      "statRequirements": { "intellect": 1, "wisdom": 2, "discipline": 1 },
+      "content": "Ecological assessments evaluate environmental and contextual variables influencing behavior."
+    },
+    {
+      "id": "3.4",
+      "title": "Individualized & Curriculum-Based Assessments",
+      "xp": 40,
+      "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 1 },
+      "content": "Curriculum-based tools like VB-MAPP identify skill strengths and deficits to guide SAP development."
+    }
+  ]
+}

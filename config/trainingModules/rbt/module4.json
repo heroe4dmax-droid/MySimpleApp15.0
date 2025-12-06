@@ -1,0 +1,131 @@
+{
+  "id": 4,
+  "slug": "plans-brp-bip-sap-crisis",
+  "title": "Module 4 – Plans: BRP, BIP, SAP, & Crisis",
+  "order": 4,
+
+  "xpRewards": {
+    "novice": 70,
+    "standard": 130,
+    "expert": 240
+  },
+
+  "statRequirements": {
+    "novice": { "intellect": 1, "wisdom": 0, "discipline": 1 },
+    "standard": { "intellect": 2, "wisdom": 1, "discipline": 2 },
+    "expert": { "intellect": 3, "wisdom": 2, "discipline": 3 }
+  },
+
+  "unlock": {
+    "requiresModuleIds": [1, 2, 3],
+    "minHeroLevel": 4
+  },
+
+  "difficultyLabels": {
+    "novice": "Planner",
+    "standard": "Strategist",
+    "expert": "Architect"
+  },
+
+  "summaries": {
+    "novice": "Learn how treatment plans guide skill teaching and behavior reduction.",
+    "standard": "Understand how BRPs, BIPs, SAPs, and Crisis Plans work together in treatment.",
+    "expert": "Implement and analyze comprehensive treatment and crisis plans with fidelity and safety."
+  },
+
+  "flashcardXP": {
+    "novice": 10,
+    "standard": 20,
+    "expert": 50,
+    "perCard": {
+      "qa": 10,
+      "fill": 15,
+      "mc": 20,
+      "scenario": 30
+    }
+  },
+
+  "flashcardUnlock": {
+    "novice": { "level": 1 },
+    "standard": {
+      "level": 2,
+      "stats": { "intellect": 2, "discipline": 1 }
+    },
+    "expert": {
+      "level": 3,
+      "stats": { "intellect": 3, "wisdom": 2, "discipline": 3 }
+    }
+  },
+
+  "flashcards": {
+    "novice": [
+      { "id": "4-N1", "type": "qa", "question": "What does BRP stand for?", "answer": "Behavior Reduction Plan" },
+      { "id": "4-N2", "type": "qa", "question": "What does BIP stand for?", "answer": "Behavior Intervention Plan" },
+      { "id": "4-N3", "type": "fill", "question": "A BRP always includes a __________ behavior.", "answer": "replacement" },
+      { "id": "4-N4", "type": "qa", "question": "What is the purpose of a crisis plan?", "answer": "To keep the client and RBT safe during dangerous behavior." },
+      { "id": "4-N5", "type": "qa", "question": "True or False: A BIP may include blocking for safety.", "answer": "True" },
+      { "id": "4-N6", "type": "qa", "question": "Which plan includes de-escalation techniques?", "answer": "BIP" },
+      { "id": "4-N7", "type": "fill", "question": "A BRP starts with an operational __________ of behavior.", "answer": "definition" },
+      { "id": "4-N8", "type": "qa", "question": "What assessment helps identify behavior function for a BRP?", "answer": "Functional Behavior Assessment (FBA)" },
+      { "id": "4-N9", "type": "qa", "question": "True or False: Every BRP requires data collection.", "answer": "True" },
+      { "id": "4-N10", "type": "qa", "question": "Name one crisis-level behavior addressed in BIPs.", "answer": "Self-injury or aggression" }
+    ],
+
+    "standard": [
+      { "id": "4-S1", "type": "mc", "question": "Which is NOT a standard component of a BRP?", "options": ["Operational definition", "Behavior function", "Reinforcement menu", "Crisis response"], "correctOptionIndex": 2 },
+      { "id": "4-S2", "type": "mc", "question": "A replacement behavior must:", "options": ["Look similar", "Serve the same function", "Be harder", "Only occur in therapy"], "correctOptionIndex": 1 },
+      { "id": "4-S3", "type": "mc", "question": "Which is TRUE about a BIP?", "options": ["Replaces BRP", "Used only for minor behavior", "Includes crisis procedures", "Never includes blocking"], "correctOptionIndex": 2 },
+      { "id": "4-S4", "type": "mc", "question": "Which teaching system belongs inside SAP?", "options": ["DTT", "Punishment", "Graph review", "Token deduction"], "correctOptionIndex": 0 },
+      { "id": "4-S5", "type": "mc", "question": "Which is an antecedent strategy?", "options": ["Extinction", "Differential reinforcement", "High-probability sequence", "Response blocking"], "correctOptionIndex": 2 },
+      { "id": "4-S6", "type": "mc", "question": "Which document contains medical emergency steps?", "options": ["BRP", "SAP", "Ethics code", "Crisis plan"], "correctOptionIndex": 3 },
+      { "id": "4-S7", "type": "mc", "question": "Which strategy teaches chains step-by-step?", "options": ["Shaping", "Chaining", "Prompt fading", "FCT"], "correctOptionIndex": 1 },
+      { "id": "4-S8", "type": "mc", "question": "Errorless teaching aims to:", "options": ["Allow errors", "Reduce frustration", "Increase effort", "Fade reinforcement"], "correctOptionIndex": 1 },
+      { "id": "4-S9", "type": "mc", "question": "What should always accompany extinction?", "options": ["Punishment", "Replacement reinforcement", "Response cost", "Token loss"], "correctOptionIndex": 1 },
+      { "id": "4-S10", "type": "mc", "question": "Which is a key SAP component?", "options": ["Restraint protocol", "Crisis block", "Mastery criteria", "Level system"], "correctOptionIndex": 2 }
+    ],
+
+    "expert": [
+      { "id": "4-E1", "type": "scenario", "question": "Client screams to escape tasks. Best replacement behavior?", "answer": "Requesting a break appropriately", "explanation": "Replacement must match escape function." },
+      { "id": "4-E2", "type": "scenario", "question": "Client engages in SIB. BIP prescribes blocking. Why?", "answer": "Prevent injury and cut off reinforcement", "explanation": "Blocking ensures safety and extinction." },
+      { "id": "4-E3", "type": "scenario", "question": "BRP prescribes DRA for attention aggression. Correct response?", "answer": "Reinforce bids, withhold attention for aggression", "explanation": "DRA reinforces alternative behavior." },
+      { "id": "4-E4", "type": "scenario", "question": "Why use backward chaining for handwashing?", "answer": "Final step has strongest natural reinforcement", "explanation": "Backward chaining guarantees contact with reinforcement." },
+      { "id": "4-E5", "type": "scenario", "question": "Why use demand fading?", "answer": "Gradually increase tolerance to tasks", "explanation": "Reduces escape-maintained behavior." },
+      { "id": "4-E6", "type": "scenario", "question": "What should RBT do during extinction burst?", "answer": "Remain consistent and teach replacement behaviors", "explanation": "Bursts are temporary and expected." },
+      { "id": "4-E7", "type": "scenario", "question": "Pressing nose to block biting is what procedure?", "answer": "Response blocking", "explanation": "Interrupts dangerous behavior." },
+      { "id": "4-E8", "type": "scenario", "question": "Why is mastery critical in SAP?", "answer": "Ensure stability before fading teaching", "explanation": "Prevents premature advancement." },
+      { "id": "4-E9", "type": "scenario", "question": "Why combine NET and DTT?", "answer": "Precision plus generalization", "explanation": "Each serves a different function." },
+      { "id": "4-E10", "type": "scenario", "question": "BRP uses extinction + DRA. What must RBT do?", "answer": "Ignore tantrums and reinforce appropriate requests", "explanation": "Strengthens communication, weakens problem behavior." }
+    ]
+  },
+
+  "sections": [
+    {
+      "id": "4.1",
+      "title": "Behavior Reduction Plan (BRP)",
+      "xp": 40,
+      "statRequirements": { "intellect": 2, "wisdom": 1, "discipline": 2 },
+      "content": "BRPs define target behavior, function, replacement skills, antecedent and consequence strategies, data collection, and safety procedures."
+    },
+    {
+      "id": "4.2",
+      "title": "Behavior Intervention Plan (BIP) & Crisis Management",
+      "xp": 40,
+      "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 3 },
+      "content": "BIPs expand BRPs with crisis and de-escalation steps for severe behaviors, prioritizing safety."
+    },
+    {
+      "id": "4.3",
+      "title": "Skill Acquisition Plan (SAP) Structure",
+      "xp": 45,
+      "statRequirements": { "intellect": 3, "wisdom": 2, "discipline": 2 },
+      "content": "SAPs define skill targets, teaching procedures, prompts, mastery criteria, generalization, and maintenance."
+    },
+    {
+      "id": "4.4",
+      "title": "Emergency & Medical Crisis Plans",
+      "xp": 35,
+      "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 3 },
+      "content": "Emergency plans outline steps for medical emergencies or severe injury, ensuring client and staff safety."
+    }
+  ]
+}

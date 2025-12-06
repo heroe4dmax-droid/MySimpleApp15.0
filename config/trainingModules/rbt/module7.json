@@ -1,0 +1,131 @@
+{
+  "id": 7,
+  "slug": "exam-taking-tips",
+  "title": "Module 7 – Exam Taking Tips",
+  "order": 7,
+
+  "xpRewards": {
+    "novice": 40,
+    "standard": 80,
+    "expert": 150
+  },
+
+  "statRequirements": {
+    "novice": { "intellect": 0, "wisdom": 0, "discipline": 0 },
+    "standard": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+    "expert": { "intellect": 1, "wisdom": 2, "discipline": 2 }
+  },
+
+  "unlock": {
+    "requiresModuleIds": [1, 2, 3, 4, 5, 6],
+    "minHeroLevel": 7
+  },
+
+  "difficultyLabels": {
+    "novice": "Test Ready",
+    "standard": "Strategic Test Taker",
+    "expert": "Exam Master"
+  },
+
+  "summaries": {
+    "novice": "Learn basic strategies to approach the RBT exam with confidence and preparation.",
+    "standard": "Apply time management, question analysis, and anxiety-reduction strategies during the exam.",
+    "expert": "Demonstrate advanced test-taking strategy by breaking down complex scenarios and selecting answers using ABA reasoning."
+  },
+
+  "flashcardXP": {
+    "novice": 10,
+    "standard": 20,
+    "expert": 50,
+    "perCard": {
+      "qa": 10,
+      "fill": 15,
+      "mc": 20,
+      "scenario": 30
+    }
+  },
+
+  "flashcardUnlock": {
+    "novice": { "level": 1 },
+    "standard": {
+      "level": 2,
+      "stats": { "wisdom": 1, "discipline": 1 }
+    },
+    "expert": {
+      "level": 3,
+      "stats": { "wisdom": 2, "discipline": 2 }
+    }
+  },
+
+  "flashcards": {
+    "novice": [
+      { "id": "7-N1", "type": "qa", "question": "What should you do with every exam question?", "answer": "Answer every question; never leave any blank." },
+      { "id": "7-N2", "type": "fill", "question": "If you don’t know an answer right away, ______ the question.", "answer": "flag" },
+      { "id": "7-N3", "type": "qa", "question": "Should you stay stuck on a difficult question?", "answer": "No, move on and return later." },
+      { "id": "7-N4", "type": "qa", "question": "Why is careful reading important?", "answer": "Small wording differences can change the correct answer." },
+      { "id": "7-N5", "type": "fill", "question": "Take the exam ______, not tired or hungry.", "answer": "well-rested" },
+      { "id": "7-N6", "type": "qa", "question": "Should you cram heavily the night before the exam?", "answer": "No, avoid heavy studying the day before." },
+      { "id": "7-N7", "type": "qa", "question": "When should you arrive at the testing center?", "answer": "Early." },
+      { "id": "7-N8", "type": "qa", "question": "What should you do if anxiety rises during the exam?", "answer": "Pause, breathe, and refocus." },
+      { "id": "7-N9", "type": "fill", "question": "Answer the ______ questions first.", "answer": "easy" },
+      { "id": "7-N10", "type": "qa", "question": "True or False: Guessing is penalized on the RBT exam.", "answer": "False." }
+    ],
+
+    "standard": [
+      { "id": "7-S1", "type": "mc", "question": "What should you do first if a question is confusing?", "options": ["Skip permanently", "Read it again carefully", "Guess immediately", "Ask proctor"], "correctOptionIndex": 1 },
+      { "id": "7-S2", "type": "mc", "question": "Why avoid heavy studying the day before?", "options": ["It raises stress", "It hurts focus", "You need mental rest", "All of the above"], "correctOptionIndex": 3 },
+      { "id": "7-S3", "type": "mc", "question": "Which strategy prevents wasting time?", "options": ["Random guessing", "Flag and return", "Skip all first", "Reread endlessly"], "correctOptionIndex": 1 },
+      { "id": "7-S4", "type": "mc", "question": "Why answer easy questions first?", "options": ["They guarantee points", "Boost confidence and save time", "Hard ones don’t matter", "None"], "correctOptionIndex": 1 },
+      { "id": "7-S5", "type": "mc", "question": "Best way to manage anxiety?", "options": ["Ignore it", "Brief mental breaks", "Panic quietly", "Exit exam"], "correctOptionIndex": 1 },
+      { "id": "7-S6", "type": "mc", "question": "What does flagging a question do?", "options": ["Skip forever", "Mark for review", "Delete it", "Add hint"], "correctOptionIndex": 1 },
+      { "id": "7-S7", "type": "mc", "question": "Best arrival time?", "options": ["Exactly on time", "Late", "Early", "Any time"], "correctOptionIndex": 2 },
+      { "id": "7-S8", "type": "mc", "question": "Why avoid changing answers repeatedly?", "options": ["First instincts matter", "It wastes time", "It increases confusion", "All"], "correctOptionIndex": 3 },
+      { "id": "7-S9", "type": "mc", "question": "What should you do after answering all questions?", "options": ["Leave immediately", "Review flagged items", "Restart exam", "Relax"], "correctOptionIndex": 1 },
+      { "id": "7-S10", "type": "mc", "question": "Best exam mindset?", "options": ["Rush", "Overthink", "Balanced pace", "Freeze"], "correctOptionIndex": 2 }
+    ],
+
+    "expert": [
+      { "id": "7-E1", "type": "scenario", "question": "Two answers seem correct. Strategy?", "answer": "Re-read, apply ABA definitions, eliminate distractors, choose BEST answer.", "explanation": "Questions test functional accuracy." },
+      { "id": "7-E2", "type": "scenario", "question": "You feel rushed mid-exam.", "answer": "Pause, breathe, reset pace.", "explanation": "Calm restores accuracy." },
+      { "id": "7-E3", "type": "scenario", "question": "Punishment vs reinforcement confusion.", "answer": "Analyze effect on future behavior, not labels.", "explanation": "Definitions matter more than wording." },
+      { "id": "7-E4", "type": "scenario", "question": "Anxiety spikes.", "answer": "Use controlled breathing and refocus.", "explanation": "Physiological regulation improves cognition." },
+      { "id": "7-E5", "type": "scenario", "question": "Broad vs specific answers.", "answer": "Choose the most precise answer unless question asks general.", "explanation": "Specificity signals mastery." },
+      { "id": "7-E6", "type": "scenario", "question": "Multiple flagged questions remain.", "answer": "Eliminate unlikely options and apply principles.", "explanation": "Process of elimination improves odds." },
+      { "id": "7-E7", "type": "scenario", "question": "Schedule mixed with DRA.", "answer": "Identify the schedule first, then match DRA.", "explanation": "Separate concepts mentally." },
+      { "id": "7-E8", "type": "scenario", "question": "Extinction mixed with punishment cues.", "answer": "Confirm reinforcement removal vs stimulus change.", "explanation": "Extinction = withholding reinforcement." },
+      { "id": "7-E9", "type": "scenario", "question": "Finished early.", "answer": "Review flagged questions for careless errors.", "explanation": "Extra time increases accuracy." },
+      { "id": "7-E10", "type": "scenario", "question": "Long scenario question.", "answer": "Break into ABC, identify function, match principle.", "explanation": "Functional analysis guides correct choice." }
+    ]
+  },
+
+  "sections": [
+    {
+      "id": "7.1",
+      "title": "Day-Before Preparation",
+      "xp": 20,
+      "statRequirements": { "wisdom": 1, "discipline": 1 },
+      "content": "Avoid cramming. Do light review, relax, sleep well, and prepare materials ahead of time."
+    },
+    {
+      "id": "7.2",
+      "title": "Mindset & Environment",
+      "xp": 25,
+      "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+      "content": "Arrive early, eat appropriately, manage anxiety, and minimize distractions."
+    },
+    {
+      "id": "7.3",
+      "title": "Question-Taking Strategy",
+      "xp": 35,
+      "statRequirements": { "intellect": 1, "wisdom": 2, "discipline": 2 },
+      "content": "Read carefully, eliminate distractors, answer easy questions first, and flag difficult items."
+    },
+    {
+      "id": "7.4",
+      "title": "Time Management & Review",
+      "xp": 30,
+      "statRequirements": { "intellect": 1, "wisdom": 2, "discipline": 2 },
+      "content": "Monitor time, review flagged questions, and only change answers for clear reasons."
+    }
+  ]
+}

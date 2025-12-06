@@ -1,0 +1,34 @@
+{
+  "ranks": [
+    {
+      "id": 1,
+      "name": "Initiate",
+      "xpRequired": 0
+    },
+    {
+      "id": 2,
+      "name": "Apprentice",
+      "xpRequired": 1000
+    },
+    {
+      "id": 3,
+      "name": "Warrior",
+      "xpRequired": 5000
+    },
+    {
+      "id": 4,
+      "name": "Knight",
+      "xpRequired": 15000
+    },
+    {
+      "id": 5,
+      "name": "Champion",
+      "xpRequired": 30000
+    },
+    {
+      "id": 6,
+      "name": "Legend",
+      "xpRequired": 75000
+    }
+  ]
+}
