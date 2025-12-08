@@ -1,7 +1,7 @@
 // app/(tabs)/home.js
 
 import { useRouter } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   ScrollView,
@@ -11,7 +11,6 @@ import {
 } from "react-native";
 
 import { onAuthStateChanged } from "firebase/auth";
-
 import { auth } from "../../config/firebase";
 
 import { getHero } from "../../services/heroService";
@@ -28,13 +27,19 @@ import { TRAINING_ACCESS } from "../../config/trainingAccess";
 export default function HomeScreen() {
   const router = useRouter();
 
+  const mountedRef = useRef(true);
+
   const [loading, setLoading] = useState(true);
   const [userDoc, setUserDoc] = useState(null);
   const [hero, setHero] = useState(null);
   const [allowedModules, setAllowedModules] = useState([]);
 
   useEffect(() => {
+    mountedRef.current = true;
+
     const unsub = onAuthStateChanged(auth, async (user) => {
+      if (!mountedRef.current) return;
+
       if (!user) {
         router.replace("/login");
         return;
@@ -42,38 +47,56 @@ export default function HomeScreen() {
 
       try {
         const userData = await getUser(user.uid);
-        setUserDoc(userData);
+        if (!mountedRef.current) return;
 
-        // If user has an active hero, load it
-        if (userData?.activeHeroId) {
-          const heroData = await getHero(user.uid, userData.activeHeroId);
+        setUserDoc(userData ?? null);
 
-          // 🚨 FIX: If hero has no name, force naming screen
-          if (!heroData?.name || heroData.name.trim().length === 0) {
-            router.replace(`/name-hero/${userData.activeHeroId}`);
-            return; // stop here
-          }
-
-          // Build hero object with ID
-          const heroObj = { id: userData.activeHeroId, ...heroData };
-          setHero(heroObj);
-
-          // Filter allowed training modules
-          const heroClassId = heroObj.classId;
-          const access = TRAINING_ACCESS[heroClassId] || [];
-          setAllowedModules(access);
+        // ✅ Only load hero if one is selected
+        if (!userData?.activeHeroId) {
+          setHero(null);
+          setAllowedModules([]);
+          return;
         }
+
+        const heroData = await getHero(user.uid, userData.activeHeroId);
+        if (!mountedRef.current) return;
+
+        if (!heroData) {
+          setHero(null);
+          setAllowedModules([]);
+          return;
+        }
+
+        // ✅ Force naming if needed
+        if (!heroData.name || heroData.name.trim().length === 0) {
+          router.replace(`/name-hero/${userData.activeHeroId}`);
+          return;
+        }
+
+        const heroObj = {
+          id: userData.activeHeroId,
+          ...heroData,
+        };
+
+        setHero(heroObj);
+
+        const access =
+          TRAINING_ACCESS?.[heroObj.classId] ?? [];
+        setAllowedModules(access);
       } catch (err) {
         console.log("Home load error:", err);
       } finally {
-        setLoading(false);
+        if (mountedRef.current) setLoading(false);
       }
     });
 
-    return () => unsub();
+    return () => {
+      mountedRef.current = false;
+      unsub();
+    };
   }, []);
 
-  // ---- LOADING UI ----
+  // ---------------- Loading ----------------
   if (loading) {
     return (
       <View style={styles.center}>
@@ -83,16 +106,16 @@ export default function HomeScreen() {
     );
   }
 
-  // ---- ERROR LOADING USER ----
+  // ---------------- No user ----------------
   if (!userDoc) {
     return (
       <View style={styles.center}>
-        <Text>Could not load user.</Text>
+        <Text>Could not load user data.</Text>
       </View>
     );
   }
 
-  // ---- HERO AVATAR PICKER ----
+  // ---------------- Avatar ----------------
   const avatarSource =
     hero?.classId === "behaviorTactician"
       ? images.avatars.tactician
@@ -102,15 +125,21 @@ export default function HomeScreen() {
       ? images.avatars.basketball
       : images.avatars.default;
 
-  // ---- MAIN UI ----
+  // ---------------- UI ----------------
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.greeting}>Welcome, {userDoc.name}</Text>
+      <Text style={styles.greeting}>
+        Welcome, {userDoc.name || "Hero"}
+      </Text>
 
-      {/* ---- HERO CARD ---- */}
+      {/* HERO CARD */}
       {hero ? (
         <View style={styles.card}>
-          <HeroAvatar avatar={avatarSource} name={hero.name} size={110} />
+          <HeroAvatar
+            avatar={avatarSource}
+            name={hero.name}
+            size={110}
+          />
           <HeroStats
             level={hero.level}
             classId={hero.classId}
@@ -121,9 +150,11 @@ export default function HomeScreen() {
         </View>
       ) : (
         <View style={styles.card}>
-          <Text style={styles.sectionTitle}>No active hero selected</Text>
-          <Text style={{ marginBottom: 10 }}>
-            Create or choose a hero to begin your journey.
+          <Text style={styles.sectionTitle}>
+            No active hero selected
+          </Text>
+          <Text style={{ marginBottom: 12 }}>
+            Create or select a hero to begin training.
           </Text>
           <Text
             style={styles.link}
@@ -134,42 +165,49 @@ export default function HomeScreen() {
         </View>
       )}
 
-      {/* ---- TRAINING SECTION ---- */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Training</Text>
+      {/* TRAINING */}
+      {!!hero && (
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>
+            Training
+          </Text>
 
-        {/* RBT Training */}
-        {allowedModules.includes("rbt") && (
-          <TrainingCard
-            title="RBT Training"
-            description="Behavior Tactician modules"
-            onPress={() => router.push("/(tabs)/training/rbt")}
-          />
-        )}
+          {allowedModules.includes("rbt") && (
+            <TrainingCard
+              title="RBT Training"
+              description="Behavior Tactician modules"
+              onPress={() =>
+                router.push("/(tabs)/training/rbt")
+              }
+            />
+          )}
 
-        {/* CPT Training */}
-        {allowedModules.includes("cpt") && (
-          <TrainingCard
-            title="CPT Training"
-            description="Certified Personal Trainer path"
-            onPress={() => router.push("/(tabs)/training/cpt")}
-          />
-        )}
+          {allowedModules.includes("cpt") && (
+            <TrainingCard
+              title="CPT Training"
+              description="Certified Personal Trainer path"
+              onPress={() =>
+                router.push("/(tabs)/training/cpt")
+              }
+            />
+          )}
 
-        {/* Basketball Sage Training */}
-        {allowedModules.includes("basketball") && (
-          <TrainingCard
-            title="Basketball Sage Training"
-            description="Basketball coach development"
-            onPress={() => router.push("/(tabs)/training/basketball")}
-          />
-        )}
-      </View>
+          {allowedModules.includes("basketball") && (
+            <TrainingCard
+              title="Basketball Sage Training"
+              description="Basketball coach development"
+              onPress={() =>
+                router.push("/(tabs)/training/basketball")
+              }
+            />
+          )}
+        </View>
+      )}
     </ScrollView>
   );
 }
 
-// ---- STYLES ----
+// ---------------- Styles ----------------
 const styles = StyleSheet.create({
   center: {
     flex: 1,

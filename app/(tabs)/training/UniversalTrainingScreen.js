@@ -1,5 +1,4 @@
 // app/(tabs)/training/UniversalTrainingScreen.js
-
 import React, { useEffect, useState } from "react";
 import {
   View,
@@ -15,9 +14,13 @@ import { onAuthStateChanged } from "firebase/auth";
 
 import { auth } from "../../../config/firebase";
 import { getUser } from "../../../services/userService";
-import { getHero, giveHeroXP } from "../../../services/heroService";
+import {
+  getHero,
+  giveHeroXP,
+  completeModule,
+} from "../../../services/heroService";
 
-// ✅ Static JSON imports (Metro-safe)
+// ✅ Static module imports (Metro-safe)
 import module1 from "../../../config/trainingModules/rbt/module1.json";
 import module2 from "../../../config/trainingModules/rbt/module2.json";
 import module3 from "../../../config/trainingModules/rbt/module3.json";
@@ -36,70 +39,65 @@ const MODULE_MAP = {
   "7": module7,
 };
 
-// ✅ New standardized difficulties
-const DIFFICULTIES = [
-  { key: "novice" },
-  { key: "standard" },
-  { key: "expert" },
-];
+const DIFFICULTIES = ["novice", "standard", "expert"];
 
 export default function UniversalTrainingScreen() {
   const { moduleId } = useLocalSearchParams();
   const router = useRouter();
+
   const moduleData = MODULE_MAP[moduleId];
+  const fullModuleId = `rbt_${moduleId}`;
 
   const [userId, setUserId] = useState(null);
   const [heroId, setHeroId] = useState(null);
   const [hero, setHero] = useState(null);
-  const [loadingHero, setLoadingHero] = useState(true);
-  const [expanded, setExpanded] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const [completedTiers, setCompletedTiers] = useState([]);
+  const [noviceSectionsRead, setNoviceSectionsRead] = useState(false);
+  const [openSection, setOpenSection] = useState(null);
   const [claiming, setClaiming] = useState(false);
 
+  // -------------------------
+  // LOAD USER + HERO
+  // -------------------------
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        setHero(null);
-        setLoadingHero(false);
+        setLoading(false);
         return;
       }
 
-      try {
-        setUserId(user.uid);
-        const userDoc = await getUser(user.uid);
-        const activeHeroId = userDoc?.activeHeroId;
-
-        if (!activeHeroId) {
-          setHero(null);
-          setLoadingHero(false);
-          return;
-        }
-
-        const heroData = await getHero(user.uid, activeHeroId);
-        setHero(heroData);
-        setHeroId(activeHeroId);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoadingHero(false);
+      const userDoc = await getUser(user.uid);
+      if (!userDoc?.activeHeroId) {
+        setLoading(false);
+        return;
       }
+
+      const heroData = await getHero(user.uid, userDoc.activeHeroId);
+
+      setUserId(user.uid);
+      setHeroId(userDoc.activeHeroId);
+      setHero(heroData);
+      setLoading(false);
     });
 
-    return () => unsub();
+    return unsub;
   }, []);
 
   if (!moduleData) {
     return (
       <View style={styles.center}>
-        <Text style={styles.error}>Module not found.</Text>
+        <Text>Module not found.</Text>
       </View>
     );
   }
 
-  if (loadingHero) {
+  if (loading) {
     return (
       <View style={styles.center}>
         <ActivityIndicator size="large" />
-        <Text style={{ marginTop: 8 }}>Loading hero...</Text>
+        <Text style={{ marginTop: 8 }}>Loading...</Text>
       </View>
     );
   }
@@ -110,24 +108,21 @@ export default function UniversalTrainingScreen() {
     discipline: 0,
   };
 
-  const heroLevel = hero?.level ?? 1;
-
   const meetsReq = (req = {}) =>
     heroStats.intellect >= (req.intellect ?? 0) &&
     heroStats.wisdom >= (req.wisdom ?? 0) &&
     heroStats.discipline >= (req.discipline ?? 0);
 
-  const handleClaimXP = async (difficulty) => {
-    if (!userId || !heroId || !hero) {
-      Alert.alert("No hero selected");
-      return;
-    }
+  // -------------------------
+  // CLAIM XP FOR TIER
+  // -------------------------
+  async function handleClaimXP(difficulty) {
+    if (!userId || !heroId) return;
 
     const xpGain = moduleData.xpRewards?.[difficulty] ?? 0;
     const statReq = moduleData.statRequirements?.[difficulty] ?? {};
-    const minLevel = moduleData.unlock?.minHeroLevel ?? 1;
 
-    if (!meetsReq(statReq) || heroLevel < minLevel) {
+    if (!meetsReq(statReq)) {
       Alert.alert("Locked", "Requirements not met");
       return;
     }
@@ -136,182 +131,198 @@ export default function UniversalTrainingScreen() {
       setClaiming(true);
       const updatedHero = await giveHeroXP(userId, heroId, xpGain);
       setHero(updatedHero);
-      Alert.alert("XP Gained", `+${xpGain} XP`);
+
+      setCompletedTiers((prev) =>
+        prev.includes(difficulty) ? prev : [...prev, difficulty]
+      );
     } catch {
       Alert.alert("Error", "XP could not be awarded");
     } finally {
       setClaiming(false);
     }
-  };
+  }
 
-  const renderReqText = (req = {}) =>
-    `INT ${req.intellect ?? 0} · WIS ${req.wisdom ?? 0} · DISC ${req.discipline ?? 0}`;
+  // -------------------------
+  // MODULE COMPLETION
+  // -------------------------
+  const canCompleteModule =
+    completedTiers.includes("novice") && noviceSectionsRead;
 
-  const hasFlashcards =
-    moduleData.flashcards &&
-    Object.keys(moduleData.flashcards).length > 0;
+  async function handleCompleteModule() {
+    await completeModule({
+      userId,
+      heroId,
+      moduleId: fullModuleId,
+      statRewards: { intellect: 1 },
+      talentPointsReward: 1,
+    });
 
+    router.back();
+  }
+
+  // -------------------------
+  // RENDER
+  // -------------------------
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>{moduleData.title}</Text>
       <Text style={styles.subtitle}>Module {moduleId}</Text>
 
-      {/* HERO PANEL */}
-      {hero ? (
-        <View style={styles.heroPanel}>
-          <Text style={styles.heroName}>{hero.name}</Text>
-          <Text>Level {hero.level}</Text>
-          <Text>XP: {hero.xp}</Text>
-          <View style={styles.statsRow}>
-            <Text>INT {heroStats.intellect}</Text>
-            <Text>WIS {heroStats.wisdom}</Text>
-            <Text>DISC {heroStats.discipline}</Text>
-          </View>
-        </View>
-      ) : (
-        <Text>No active hero selected.</Text>
-      )}
+      {DIFFICULTIES.map((difficulty) => {
+        const req = moduleData.statRequirements?.[difficulty];
+        const xp = moduleData.xpRewards?.[difficulty];
+        const locked = req && !meetsReq(req);
 
-      {/* DIFFICULTIES */}
-      {DIFFICULTIES.map(({ key }) => {
-        const summary = moduleData.summaries?.[key];
-        const xp = moduleData.xpRewards?.[key];
-        const req = moduleData.statRequirements?.[key];
-        const label = moduleData.difficultyLabels?.[key];
-        const locked =
-          !meetsReq(req) ||
-          heroLevel < (moduleData.unlock?.minHeroLevel ?? 1);
-
-        const expandedCard = expanded === key;
+        const noviceBlocked =
+          difficulty === "novice" && !noviceSectionsRead;
 
         return (
-          <View key={key} style={styles.card}>
-            <TouchableOpacity
-              style={styles.cardHeader}
-              onPress={() => setExpanded(expandedCard ? null : key)}
-            >
-              <Text style={styles.cardTitle}>
-                {label} {locked ? "🔒" : "🔓"}
-              </Text>
-              <Text>{expandedCard ? "▲" : "▼"}</Text>
-            </TouchableOpacity>
+          <View key={difficulty} style={styles.card}>
+            <Text style={styles.cardTitle}>
+              {difficulty.toUpperCase()}
+            </Text>
 
-            {expandedCard && (
-              <View style={styles.cardBody}>
-                <Text>{summary}</Text>
-                <Text style={styles.reqText}>
-                  Req: {renderReqText(req)}
-                </Text>
+            {/* ✅ ACCORDION NOVICE CONTENT */}
+            {difficulty === "novice" && (
+              <View style={styles.sectionBox}>
+                {moduleData.sections?.map((section) => {
+                  const isOpen = openSection === section.id;
+
+                  return (
+                    <View key={section.id} style={styles.sectionCard}>
+                      <TouchableOpacity
+                        onPress={() =>
+                          setOpenSection(isOpen ? null : section.id)
+                        }
+                      >
+                        <Text style={styles.sectionTitle}>
+                          {section.title} {isOpen ? "▲" : "▼"}
+                        </Text>
+                      </TouchableOpacity>
+
+                      {isOpen && (
+                        <View style={{ marginTop: 6 }}>
+                          {Array.isArray(section.content) ? (
+                            section.content.map((line, idx) => (
+                              <Text
+                                key={idx}
+                                style={styles.sectionContent}
+                              >
+                                • {line}
+                              </Text>
+                            ))
+                          ) : (
+                            <Text style={styles.sectionContent}>
+                              {section.content || "Content coming soon."}
+                            </Text>
+                          )}
+                        </View>
+                      )}
+                    </View>
+                  );
+                })}
 
                 <TouchableOpacity
-                  disabled={locked || claiming}
-                  onPress={() => handleClaimXP(key)}
                   style={[
-                    styles.claimButton,
-                    locked && styles.buttonDisabled,
+                    styles.readButton,
+                    noviceSectionsRead && styles.buttonDisabled,
                   ]}
+                  disabled={noviceSectionsRead}
+                  onPress={() => setNoviceSectionsRead(true)}
                 >
-                  <Text style={styles.claimText}>
-                    {locked ? "Locked" : `Complete (+${xp} XP)`}
+                  <Text style={styles.readButtonText}>
+                    {noviceSectionsRead
+                      ? "Novice Content Read ✅"
+                      : "Mark Sections as Read"}
                   </Text>
                 </TouchableOpacity>
               </View>
             )}
+
+            <TouchableOpacity
+              disabled={locked || claiming || noviceBlocked}
+              onPress={() => handleClaimXP(difficulty)}
+              style={[
+                styles.claimButton,
+                (locked || noviceBlocked) && styles.buttonDisabled,
+              ]}
+            >
+              <Text style={styles.claimText}>
+                {noviceBlocked
+                  ? "Read sections to unlock"
+                  : `Earn +${xp} XP`}
+              </Text>
+            </TouchableOpacity>
           </View>
         );
       })}
 
-      {/* SECTIONS */}
-      <Text style={styles.sectionHeader}>Sections</Text>
-      {moduleData.sections?.map((s) => (
-        <View key={s.id} style={styles.sectionCard}>
-          <Text style={styles.sectionTitle}>{s.title}</Text>
-          <Text style={styles.sectionReqText}>
-            Req: {renderReqText(s.statRequirements)}
-          </Text>
-          <Text>{s.content}</Text>
-        </View>
-      ))}
-
-      {/* FLASHCARDS */}
-      {hasFlashcards && (
-        <TouchableOpacity
-          style={styles.flashcardButton}
-          onPress={() =>
-            router.push(`/training/rbt/${moduleId}/flashcards`)
-          }
-        >
-          <Text style={styles.flashcardText}>📚 Study Flashcards</Text>
-        </TouchableOpacity>
-      )}
+      <TouchableOpacity
+        disabled={!canCompleteModule}
+        onPress={handleCompleteModule}
+        style={[
+          styles.completeButton,
+          !canCompleteModule && styles.buttonDisabled,
+        ]}
+      >
+        <Text style={styles.claimText}>
+          Complete Module ✅
+        </Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
 
+// -------------------------
+// STYLES
+// -------------------------
 const styles = StyleSheet.create({
   container: { padding: 20 },
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
-  error: { color: "red", fontSize: 18 },
 
   title: { fontSize: 28, fontWeight: "bold" },
-  subtitle: { fontSize: 16, marginBottom: 20 },
-
-  heroPanel: {
-    padding: 14,
-    backgroundColor: "#eef2ff",
-    borderRadius: 12,
-    marginBottom: 20,
-  },
-
-  heroName: { fontSize: 18, fontWeight: "bold" },
-  statsRow: { flexDirection: "row", justifyContent: "space-between" },
+  subtitle: { marginBottom: 20 },
 
   card: {
-    borderWidth: 1,
-    borderRadius: 10,
-    marginBottom: 12,
-    borderColor: "#e5e7eb",
-  },
-  cardHeader: {
     padding: 14,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    borderRadius: 12,
+    borderWidth: 1,
+    marginBottom: 14,
   },
-  cardTitle: { fontWeight: "bold", fontSize: 16 },
-
-  cardBody: { padding: 14 },
-  reqText: { fontSize: 12, marginVertical: 6, color: "#666" },
+  cardTitle: { fontWeight: "bold", marginBottom: 8 },
 
   claimButton: {
     backgroundColor: "#2563eb",
     padding: 10,
     borderRadius: 8,
     alignItems: "center",
+    marginTop: 10,
+  },
+  completeButton: {
+    marginTop: 24,
+    backgroundColor: "#10b981",
+    padding: 14,
+    borderRadius: 12,
+    alignItems: "center",
   },
   buttonDisabled: { backgroundColor: "#9ca3af" },
   claimText: { color: "white", fontWeight: "bold" },
 
-  sectionHeader: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginVertical: 14,
-  },
-  sectionCard: {
-    padding: 14,
-    borderWidth: 1,
-    borderColor: "#e5e7eb",
+  sectionBox: {
+    backgroundColor: "#f9fafb",
     borderRadius: 10,
-    marginBottom: 10,
+    padding: 12,
   },
+  sectionCard: { marginBottom: 12 },
   sectionTitle: { fontWeight: "bold" },
-  sectionReqText: { fontSize: 12, color: "#666" },
+  sectionContent: { marginBottom: 4, color: "#374151" },
 
-  flashcardButton: {
-    marginVertical: 30,
-    padding: 14,
+  readButton: {
+    marginTop: 12,
     backgroundColor: "#10b981",
-    borderRadius: 10,
+    padding: 10,
+    borderRadius: 8,
     alignItems: "center",
   },
-  flashcardText: { color: "white", fontWeight: "bold", fontSize: 16 },
+  readButtonText: { color: "white", fontWeight: "600" },
 });

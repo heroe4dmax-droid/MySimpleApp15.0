@@ -5,7 +5,7 @@ export default function RBTIndex() {
   const router = useRouter();
 
   const modules = [
-    { id: "1", title: "3-Term Contingency" },
+    { id: "1", title: "3-Term Contingency", starter: true },
     { id: "2", title: "Data Collection" },
     { id: "3", title: "Assessments" },
     { id: "4", title: "Plans" },
@@ -17,7 +17,6 @@ export default function RBTIndex() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>RBT Training</Text>
-
       {modules.map((m) => (
         <TouchableOpacity
           key={m.id}
@@ -32,7 +31,7 @@ export default function RBTIndex() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
+  container: { padding: 20 },
   title: { fontSize: 26, marginBottom: 20 },
   button: {
     padding: 15,

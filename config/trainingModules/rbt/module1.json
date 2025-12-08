@@ -101,11 +101,11 @@
   },
 
   "sections": [
-    { "id": "1.1", "title": "Overview of ABC", "xp": 25, "statRequirements": { "intellect": 0, "wisdom": 0, "discipline": 0 } },
-    { "id": "1.2", "title": "Antecedents & Stimulus Control", "xp": 30, "statRequirements": { "intellect": 1, "wisdom": 0, "discipline": 0 } },
-    { "id": "1.3", "title": "Defining Behavior", "xp": 30, "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 0 } },
-    { "id": "1.4", "title": "Consequences", "xp": 35, "statRequirements": { "intellect": 2, "wisdom": 1, "discipline": 1 } },
-    { "id": "1.5", "title": "Functions of Behavior", "xp": 35, "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 1 } },
-    { "id": "1.6", "title": "Putting It All Together", "xp": 45, "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 } }
+    { "id": "1.1", "title": "Overview of ABC", "xp": 25, "statRequirements": { "intellect": 0, "wisdom": 0, "discipline": 0 }, "content": ["Applied Behavior Analysis uses the Antecedent–Behavior–Consequence model to understand why behavior occurs and how it is influenced."] },
+    { "id": "1.2", "title": "Antecedents & Stimulus Control", "xp": 30, "statRequirements": { "intellect": 1, "wisdom": 0, "discipline": 0 }, "content": ["Antecedents are events that occur before behavior. Stimulus control occurs when behavior happens more in the presence of a specific stimulus."] },
+    { "id": "1.3", "title": "Defining Behavior", "xp": 30, "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 0 }, "content": ["Behavior must be observable, measurable, and objective. Avoid emotional or subjective language when defining behavior."] },
+    { "id": "1.4", "title": "Consequences", "xp": 35, "statRequirements": { "intellect": 2, "wisdom": 1, "discipline": 1 }, "content": ["Consequences follow behavior and affect the likelihood of its future occurrence. Reinforcement increases behavior; punishment decreases it."] },
+    { "id": "1.5", "title": "Functions of Behavior", "xp": 35, "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 1 }, "content": ["Behaviors typically serve one of four functions: escape, attention, access to tangibles, or sensory stimulation."] },
+    { "id": "1.6", "title": "Putting It All Together", "xp": 45, "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 }, "content": ["By analyzing antecedents and consequences together, we can make informed decisions about behavior function and intervention strategies."] }
   ]
 }
