@@ -14,14 +14,13 @@ import { auth } from "../../../../../config/firebase";
 import { getUser } from "../../../../../services/userService";
 import { getHero, giveHeroXP } from "../../../../../services/heroService";
 
-// ✅ Module imports
+// ✅ MODULE IMPORTS (LOCKED TO 1–6)
 import module1 from "../../../../../config/trainingModules/rbt/module1.json";
 import module2 from "../../../../../config/trainingModules/rbt/module2.json";
 import module3 from "../../../../../config/trainingModules/rbt/module3.json";
 import module4 from "../../../../../config/trainingModules/rbt/module4.json";
 import module5 from "../../../../../config/trainingModules/rbt/module5.json";
 import module6 from "../../../../../config/trainingModules/rbt/module6.json";
-import module7 from "../../../../../config/trainingModules/rbt/module7.json";
 
 const MODULE_MAP = {
   "1": module1,
@@ -30,21 +29,17 @@ const MODULE_MAP = {
   "4": module4,
   "5": module5,
   "6": module6,
-  "7": module7,
 };
 
-const TIERS = [
-  { key: "novice", label: "Novice" },
-  { key: "standard", label: "Standard" },
-  { key: "expert", label: "Expert" },
-];
+const TIERS = ["novice", "standard", "expert"];
 
-export default function FlashcardsScreen() {
+export default function Flashcards() {
   const { moduleId } = useLocalSearchParams();
   const router = useRouter();
   const moduleData = MODULE_MAP[moduleId];
 
   const [revealed, setRevealed] = useState({});
+  const [completedTiers, setCompletedTiers] = useState([]);
   const [selectedTier, setSelectedTier] = useState("novice");
 
   const [userId, setUserId] = useState(null);
@@ -60,12 +55,11 @@ export default function FlashcardsScreen() {
 
       setUserId(user.uid);
       const userDoc = await getUser(user.uid);
-      const activeHeroId = userDoc?.activeHeroId;
-      if (!activeHeroId) return;
+      if (!userDoc?.activeHeroId) return;
 
-      const heroData = await getHero(user.uid, activeHeroId);
+      const heroData = await getHero(user.uid, userDoc.activeHeroId);
       setHero(heroData);
-      setHeroId(activeHeroId);
+      setHeroId(userDoc.activeHeroId);
     });
 
     return () => unsub();
@@ -80,63 +74,62 @@ export default function FlashcardsScreen() {
   }
 
   // --------------------------------------------------
-  // TIER UNLOCK (JSON-DRIVEN)
+  // TIER LOCKING (PROGRESSION FIRST)
   // --------------------------------------------------
-  const tierUnlock = moduleData.flashcardUnlock?.[selectedTier] ?? {};
-  const heroStats = hero?.stats ?? {};
-  const heroLevel = hero?.level ?? 1;
+  function isTierLocked(tier) {
+    if (tier === "novice") return false;
+    if (tier === "standard") return !completedTiers.includes("novice");
+    if (tier === "expert") return !completedTiers.includes("standard");
+    return true;
+  }
 
-  const meetsStatReq =
-    heroStats.intellect >= (tierUnlock.stats?.intellect ?? 0) &&
-    heroStats.wisdom >= (tierUnlock.stats?.wisdom ?? 0) &&
-    heroStats.discipline >= (tierUnlock.stats?.discipline ?? 0);
-
-  const meetsLevelReq = heroLevel >= (tierUnlock.level ?? 1);
-  const tierLocked = !meetsStatReq || !meetsLevelReq;
+  const tierLocked = isTierLocked(selectedTier);
 
   // --------------------------------------------------
-  // CARDS
+  // CARDS + XP
   // --------------------------------------------------
-  const cards = moduleData.flashcards?.[selectedTier] || [];
-
-  const perCardXP =
-    moduleData.flashcardXP?.perCard || {};
-
-  const tierXP =
-    moduleData.flashcardXP?.[selectedTier] ||
-    moduleData.flashcardXP?.tier?.[selectedTier] ||
-    0;
+  const cards = moduleData.flashcards?.[selectedTier] ?? [];
+  const perCardXP = moduleData.flashcardXP?.perCard ?? {};
+  const tierXP = moduleData.flashcardXP?.[selectedTier] ?? 0;
 
   // --------------------------------------------------
-  // TOGGLE ANSWER + XP (ONE-TIME PER CARD)
+  // REVEAL CARD (ONE-TIME XP)
   // --------------------------------------------------
-  const handleReveal = async (card) => {
+  async function handleReveal(card) {
     if (revealed[card.id]) return;
 
-    setRevealed((prev) => ({ ...prev, [card.id]: true }));
+    setRevealed((p) => ({ ...p, [card.id]: true }));
 
     const xp = perCardXP[card.type] ?? 0;
     if (xp > 0 && userId && heroId) {
       await giveHeroXP(userId, heroId, xp);
     }
-  };
+  }
 
   // --------------------------------------------------
-  // TIER COMPLETION
+  // COMPLETE TIER
   // --------------------------------------------------
-  const allRevealed = cards.length > 0 && cards.every((c) => revealed[c.id]);
+  const allRevealed =
+    cards.length > 0 && cards.every((c) => revealed[c.id]);
 
-  const handleCompleteTier = async () => {
+  async function handleCompleteTier() {
     if (!allRevealed) {
-      Alert.alert("Incomplete", "Reveal all cards first.");
+      Alert.alert("Not yet", "Reveal all cards first.");
+      return;
+    }
+
+    if (completedTiers.includes(selectedTier)) {
+      Alert.alert("Completed", "Tier already completed.");
       return;
     }
 
     if (tierXP > 0 && userId && heroId) {
       await giveHeroXP(userId, heroId, tierXP);
-      Alert.alert("Tier Complete!", `+${tierXP} XP`);
     }
-  };
+
+    setCompletedTiers((p) => [...p, selectedTier]);
+    Alert.alert("Tier Complete ✅", `+${tierXP} XP`);
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -156,15 +149,15 @@ export default function FlashcardsScreen() {
         {/* TIER SELECT */}
         <View style={styles.tierRow}>
           {TIERS.map((tier) => {
-            const active = tier.key === selectedTier;
+            const active = tier === selectedTier;
             return (
               <TouchableOpacity
-                key={tier.key}
+                key={tier}
                 style={[
                   styles.tierButton,
                   active && styles.tierButtonActive,
                 ]}
-                onPress={() => setSelectedTier(tier.key)}
+                onPress={() => setSelectedTier(tier)}
               >
                 <Text
                   style={[
@@ -172,7 +165,7 @@ export default function FlashcardsScreen() {
                     active && styles.tierButtonTextActive,
                   ]}
                 >
-                  {tier.label}
+                  {tier.toUpperCase()}
                 </Text>
               </TouchableOpacity>
             );
@@ -184,7 +177,7 @@ export default function FlashcardsScreen() {
           <View style={styles.lockedBox}>
             <Text style={styles.lockedText}>🔒 Tier Locked</Text>
             <Text style={styles.lockedSub}>
-              Requires Level {tierUnlock.level ?? 1}
+              Complete previous tier first
             </Text>
           </View>
         )}
@@ -195,17 +188,16 @@ export default function FlashcardsScreen() {
             return (
               <View key={card.id} style={styles.card}>
                 <Text style={styles.cardId}>
-                  #{card.id} · {card.type.toUpperCase()}
+                  #{card.id} · {card.type?.toUpperCase()}
                 </Text>
 
                 <Text style={styles.questionText}>{card.question}</Text>
 
-                {Array.isArray(card.options) &&
-                  card.options.map((opt, idx) => (
-                    <Text key={idx} style={styles.optionText}>
-                      {String.fromCharCode(65 + idx)}. {opt}
-                    </Text>
-                  ))}
+                {card.options?.map((opt, idx) => (
+                  <Text key={idx} style={styles.optionText}>
+                    {String.fromCharCode(65 + idx)}. {opt}
+                  </Text>
+                ))}
 
                 <TouchableOpacity
                   style={styles.revealButton}
@@ -218,7 +210,7 @@ export default function FlashcardsScreen() {
 
                 {isRevealed && (
                   <View style={styles.answerBlock}>
-                    <Text style={styles.answerLabel}>Answer:</Text>
+                    <Text style={styles.answerLabel}>Answer</Text>
                     <Text style={styles.answerText}>
                       {card.answer ??
                         card.options?.[card.correctOptionIndex]}
@@ -238,13 +230,17 @@ export default function FlashcardsScreen() {
           <TouchableOpacity
             style={[
               styles.completeButton,
-              !allRevealed && styles.completeButtonDisabled,
+              (!allRevealed ||
+                completedTiers.includes(selectedTier)) &&
+                styles.completeButtonDisabled,
             ]}
-            disabled={!allRevealed}
+            disabled={
+              !allRevealed || completedTiers.includes(selectedTier)
+            }
             onPress={handleCompleteTier}
           >
             <Text style={styles.completeText}>
-              Complete Tier (+{tierXP} XP)
+              Complete {selectedTier} (+{tierXP} XP)
             </Text>
           </TouchableOpacity>
         )}
@@ -255,9 +251,12 @@ export default function FlashcardsScreen() {
   );
 }
 
+// --------------------------------------------------
+// STYLES
+// --------------------------------------------------
 const styles = StyleSheet.create({
-  center: { alignItems: "center", justifyContent: "center" },
-  error: { fontSize: 18, color: "red" },
+  center: { flex: 1, alignItems: "center", justifyContent: "center" },
+  error: { color: "red", fontSize: 16 },
 
   headerBar: {
     flexDirection: "row",
@@ -266,24 +265,24 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
   },
-  backText: { color: "#2563eb", fontSize: 16 },
+  backText: { color: "#2563eb" },
   headerTitle: { flex: 1, textAlign: "center", fontWeight: "bold" },
 
   container: { padding: 16 },
   moduleTitle: { fontSize: 22, fontWeight: "bold" },
-  moduleSubtitle: { fontSize: 14, color: "#777", marginBottom: 12 },
+  moduleSubtitle: { fontSize: 14, color: "#777", marginBottom: 14 },
 
   tierRow: { flexDirection: "row", marginBottom: 16 },
   tierButton: {
     flex: 1,
-    paddingVertical: 10,
-    marginHorizontal: 4,
     borderWidth: 1,
+    marginHorizontal: 4,
+    paddingVertical: 10,
     borderRadius: 50,
     alignItems: "center",
   },
   tierButtonActive: { backgroundColor: "#2563eb" },
-  tierButtonTextActive: { color: "white" },
+  tierButtonTextActive: { color: "#fff" },
 
   lockedBox: {
     backgroundColor: "#fee2e2",
@@ -291,11 +290,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 18,
   },
+  lockedText: { fontWeight: "bold" },
+  lockedSub: { fontSize: 12, color: "#555" },
 
   card: {
-    padding: 14,
-    borderRadius: 10,
     borderWidth: 1,
+    borderRadius: 10,
+    padding: 14,
     marginBottom: 14,
   },
   cardId: { fontSize: 11, color: "#666" },
@@ -304,25 +305,29 @@ const styles = StyleSheet.create({
 
   revealButton: {
     marginTop: 10,
-    padding: 8,
     backgroundColor: "#10b981",
+    padding: 8,
     borderRadius: 8,
     alignItems: "center",
   },
+  revealButtonText: { color: "#fff", fontWeight: "bold" },
 
   answerBlock: {
     marginTop: 10,
     paddingTop: 8,
     borderTopWidth: 1,
   },
+  answerLabel: { fontWeight: "bold" },
+  answerText: { marginTop: 4 },
+  explanationText: { marginTop: 4, color: "#555" },
 
   completeButton: {
+    marginTop: 20,
+    backgroundColor: "#2563eb",
     paddingVertical: 14,
     borderRadius: 10,
     alignItems: "center",
-    backgroundColor: "#2563eb",
-    marginTop: 20,
   },
   completeButtonDisabled: { backgroundColor: "#9ca3af" },
-  completeText: { color: "white", fontWeight: "bold" },
+  completeText: { color: "#fff", fontWeight: "bold" },
 });

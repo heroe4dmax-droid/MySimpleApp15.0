@@ -1,7 +1,7 @@
 {
   "id": 5,
-  "slug": "verbal-operants",
-  "title": "Module 5 – Verbal Operants",
+  "slug": "ethics-professional-conduct",
+  "title": "Module 5 – Ethics & Professional Conduct",
   "order": 5,
 
   "xpRewards": {
@@ -10,129 +10,176 @@
     "expert": 220
   },
 
-  "statRequirements": {
-    "novice": { "intellect": 1, "wisdom": 0, "discipline": 0 },
-    "standard": { "intellect": 2, "wisdom": 1, "discipline": 1 },
-    "expert": { "intellect": 3, "wisdom": 2, "discipline": 2 }
-  },
-
-  "unlock": {
-    "requiresModuleIds": [1, 2, 3, 4],
-    "minHeroLevel": 5
-  },
-
   "difficultyLabels": {
-    "novice": "Speaker",
-    "standard": "Communicator",
-    "expert": "Language Tactician"
+    "novice": "Professional",
+    "standard": "Practitioner",
+    "expert": "Ethics Guardian"
   },
 
   "summaries": {
-    "novice": "Learn the basic types of verbal behavior and how language is categorized by function.",
-    "standard": "Differentiate between echoics, mands, tacts, intraverbals, and codics during teaching.",
-    "expert": "Apply Skinner’s verbal behavior framework to develop functional communication across contexts."
+    "novice": "Understand ethical responsibility, client rights, and the RBT’s professional role.",
+    "standard": "Apply confidentiality, boundaries, and scope-of-practice standards in daily practice.",
+    "expert": "Analyze ethical dilemmas and select appropriate actions aligned with the BACB Ethics Code."
+  },
+
+  "sections": {
+    "novice": [
+      {
+        "id": "5.1",
+        "title": "Why Ethics Matter in ABA",
+        "content": [
+          "Ethics protect client welfare.",
+          "ABA services impact lives directly.",
+          "Technicians hold positions of trust.",
+          "Ethics guide professional decisions.",
+          "Client rights are always prioritized."
+        ]
+      },
+      {
+        "id": "5.2",
+        "title": "The Role of the RBT",
+        "content": [
+          "RBTs work under close supervision.",
+          "They do not design or modify treatment plans.",
+          "Programs are implemented as written.",
+          "Concerns are reported to supervisors.",
+          "Scope of practice must be respected."
+        ]
+      },
+      {
+        "id": "5.3",
+        "title": "Client Rights and Dignity",
+        "content": [
+          "Clients are treated with respect.",
+          "Dignity is maintained during intervention.",
+          "Least restrictive procedures are preferred.",
+          "Privacy and confidentiality are protected.",
+          "Clients are individuals, not diagnoses."
+        ]
+      }
+    ],
+
+    "standard": [
+      {
+        "id": "5.S1",
+        "title": "Professional Boundaries",
+        "content": [
+          "Dual relationships are avoided.",
+          "Personal involvement impairs objectivity.",
+          "Boundaries protect both client and RBT.",
+          "Professional behavior builds trust.",
+          "Ethics apply inside and outside sessions."
+        ]
+      },
+      {
+        "id": "5.S2",
+        "title": "Confidentiality and Privacy",
+        "content": [
+          "Client information is confidential.",
+          "Data is shared only with authorization.",
+          "Records must be stored securely.",
+          "Casual discussion of cases is prohibited.",
+          "Confidentiality is both ethical and legal."
+        ]
+      },
+      {
+        "id": "5.S3",
+        "title": "Competence and Scope of Practice",
+        "content": [
+          "RBTs practice only within training.",
+          "Tasks beyond scope require supervision.",
+          "Lack of competence must be reported.",
+          "Supervision protects clients.",
+          "Training supports ethical care."
+        ]
+      },
+      {
+        "id": "5.S4",
+        "title": "Documentation and Reporting",
+        "content": [
+          "Documentation must be accurate and timely.",
+          "Fabrication is unethical.",
+          "Errors are corrected transparently.",
+          "Reports support treatment decisions.",
+          "Integrity governs all documentation."
+        ]
+      }
+    ],
+
+    "expert": [
+      {
+        "id": "5.E1",
+        "title": "Ethical Decision-Making",
+        "content": [
+          "Ethical decisions prioritize client safety.",
+          "Multiple factors may conflict.",
+          "Supervisors are consulted when unsure.",
+          "Actions align with the ethics code.",
+          "Ethics override convenience."
+        ]
+      },
+      {
+        "id": "5.E2",
+        "title": "Responding to Ethical Violations",
+        "content": [
+          "Unethical behavior must not be ignored.",
+          "Concerns are reported appropriately.",
+          "Client protection is primary.",
+          "Documentation may be required.",
+          "Failure to act is also unethical."
+        ]
+      },
+      {
+        "id": "5.E3",
+        "title": "Dual Relationships and Conflicts of Interest",
+        "content": [
+          "Dual relationships impair objectivity.",
+          "Conflicts of interest undermine care.",
+          "Boundaries preserve professionalism.",
+          "Decisions prioritize client welfare.",
+          "Ethics protect long-term outcomes."
+        ]
+      },
+      {
+        "id": "5.E4",
+        "title": "Least Restrictive & Humane Treatment",
+        "content": [
+          "Least restrictive options are preferred.",
+          "Safety procedures must be justified.",
+          "Dignity guides intervention choices.",
+          "Harmful practices are avoided.",
+          "Ethical care balances safety and autonomy."
+        ]
+      },
+      {
+        "id": "5.E5",
+        "title": "Professional Integrity and Accountability",
+        "content": [
+          "Professionals are accountable for actions.",
+          "Integrity demands honesty.",
+          "Transparency builds trust.",
+          "Self-reflection improves practice.",
+          "Ethics define professionalism."
+        ]
+      }
+    ]
   },
 
   "flashcardXP": {
-    "novice": 10,
-    "standard": 20,
-    "expert": 50,
     "perCard": {
       "qa": 10,
       "fill": 15,
       "mc": 20,
       "scenario": 30
-    }
-  },
-
-  "flashcardUnlock": {
-    "novice": { "level": 1 },
-    "standard": {
-      "level": 2,
-      "stats": { "intellect": 2, "wisdom": 1 }
     },
-    "expert": {
-      "level": 3,
-      "stats": { "intellect": 3, "wisdom": 2, "discipline": 2 }
-    }
+    "novice": 20,
+    "standard": 40,
+    "expert": 60
   },
 
   "flashcards": {
-    "novice": [
-      { "id": "5-N1", "type": "qa", "question": "What is a mand?", "answer": "A request for something the learner wants." },
-      { "id": "5-N2", "type": "fill", "question": "A ______ is a label for something you can see, hear, smell, or touch.", "answer": "tact" },
-      { "id": "5-N3", "type": "qa", "question": "What is an echoic?", "answer": "Repeating what someone else says." },
-      { "id": "5-N4", "type": "qa", "question": "Intraverbals involve responding ______ the words of others.", "answer": "to (without matching them exactly)" },
-      { "id": "5-N5", "type": "qa", "question": "A codic includes reading and what other skill?", "answer": "Writing" },
-      { "id": "5-N6", "type": "qa", "question": "True or False: A mand always requires motivation (MO).", "answer": "True" },
-      { "id": "5-N7", "type": "qa", "question": "Which operant is labeling an object?", "answer": "Tact" },
-      { "id": "5-N8", "type": "qa", "question": "Which operant involves conversational responses?", "answer": "Intraverbal" },
-      { "id": "5-N9", "type": "qa", "question": "Echoic is best described as what?", "answer": "Vocal imitation" },
-      { "id": "5-N10", "type": "qa", "question": "What controls a mand versus a tact?", "answer": "Mand = motivation; tact = sensory stimuli." }
-    ],
-
-    "standard": [
-      { "id": "5-S1", "type": "mc", "question": "Which verbal operant is controlled by motivation (MO)?", "options": ["Tact", "Mand", "Echoic", "Codic"], "correctOptionIndex": 1 },
-      { "id": "5-S2", "type": "mc", "question": "A child says 'blue' when shown a blue square. What operant?", "options": ["Mand", "Echoic", "Tact", "Intraverbal"], "correctOptionIndex": 2 },
-      { "id": "5-S3", "type": "mc", "question": "Repeating the word 'banana' after hearing it is:", "options": ["Echoic", "Mand", "Codic", "Intraverbal"], "correctOptionIndex": 0 },
-      { "id": "5-S4", "type": "mc", "question": "Which operant builds conversational skills?", "options": ["Intraverbal", "Mand", "Echoic", "Tact"], "correctOptionIndex": 0 },
-      { "id": "5-S5", "type": "mc", "question": "Reading words aloud is an example of:", "options": ["Codic", "Echoic", "Mand", "Tact"], "correctOptionIndex": 0 },
-      { "id": "5-S6", "type": "mc", "question": "'Cookie!' said while reaching is:", "options": ["Mand", "Tact", "Intraverbal", "Echoic"], "correctOptionIndex": 0 },
-      { "id": "5-S7", "type": "mc", "question": "Which operant has point-to-point correspondence AND formal similarity?", "options": ["Echoic", "Tact", "Intraverbal", "Codic"], "correctOptionIndex": 0 },
-      { "id": "5-S8", "type": "mc", "question": "Which has point-to-point correspondence WITHOUT formal similarity?", "options": ["Codic", "Echoic", "Mand", "Intraverbal"], "correctOptionIndex": 0 },
-      { "id": "5-S9", "type": "mc", "question": "Which operant is best taught with motivation and preferred items?", "options": ["Mand", "Tact", "Echoic", "Codic"], "correctOptionIndex": 0 },
-      { "id": "5-S10", "type": "mc", "question": "Which verbal operant is controlled by non-verbal stimuli?", "options": ["Mand", "Echoic", "Intraverbal", "Tact"], "correctOptionIndex": 3 }
-    ],
-
-    "expert": [
-      { "id": "5-E1", "type": "scenario", "question": "Child labels a ball without wanting it. What operant?", "answer": "Tact", "explanation": "Labeling without motivation is a tact." },
-      { "id": "5-E2", "type": "scenario", "question": "Learner signs 'more' after finishing juice.", "answer": "Mand", "explanation": "Motivation controls this response." },
-      { "id": "5-E3", "type": "scenario", "question": "Child answers 'purple' when asked 'What color are grapes?'", "answer": "Intraverbal", "explanation": "No visual stimulus is present." },
-      { "id": "5-E4", "type": "scenario", "question": "Learner copies written text into notebook.", "answer": "Codic", "explanation": "Point-to-point correspondence without formal similarity." },
-      { "id": "5-E5", "type": "scenario", "question": "Learner repeats 'cup' exactly after therapist.", "answer": "Echoic", "explanation": "Formal similarity + correspondence." },
-      { "id": "5-E6", "type": "scenario", "question": "Child overuses 'puppy' for all animals.", "answer": "Overgeneralization of tacts", "explanation": "Stimulus control has not been refined." },
-      { "id": "5-E7", "type": "scenario", "question": "Therapist says '1, 2, _' and child says '3'.", "answer": "Intraverbal", "explanation": "Sequence completion is intraverbal." },
-      { "id": "5-E8", "type": "scenario", "question": "Learner says 'open' while handing container.", "answer": "Mand", "explanation": "Controlled by wanting access." },
-      { "id": "5-E9", "type": "scenario", "question": "Learner describes picture in book.", "answer": "Tact", "explanation": "Visual stimulus controls response." },
-      { "id": "5-E10", "type": "scenario", "question": "Learner reads a word silently then signs it.", "answer": "Codic", "explanation": "Different response form from stimulus." }
-    ]
-  },
-
-  "sections": [
-    {
-      "id": "5.1",
-      "title": "Overview of Verbal Behavior",
-      "xp": 30,
-      "statRequirements": { "intellect": 1, "wisdom": 0, "discipline": 0 },
-      "content": "Verbal behavior is defined by its function and the environmental variables that control language."
-    },
-    {
-      "id": "5.2",
-      "title": "Echoic",
-      "xp": 25,
-      "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 0 },
-      "content": "Echoics involve vocal imitation with point-to-point correspondence and formal similarity."
-    },
-    {
-      "id": "5.3",
-      "title": "Mand",
-      "xp": 35,
-      "statRequirements": { "intellect": 2, "wisdom": 1, "discipline": 1 },
-      "content": "Mands are requests controlled by motivating operations and reinforced by getting what is requested."
-    },
-    {
-      "id": "5.4",
-      "title": "Tact",
-      "xp": 35,
-      "statRequirements": { "intellect": 2, "wisdom": 1, "discipline": 1 },
-      "content": "Tacts label environmental stimuli and are reinforced by generalized reinforcers."
-    },
-    {
-      "id": "5.5",
-      "title": "Intraverbal & Codic",
-      "xp": 40,
-      "statRequirements": { "intellect": 3, "wisdom": 2, "discipline": 1 },
-      "content": "Intraverbals support conversation; codics include reading and writing with correspondence but not formal similarity."
-    }
-  ]
+    "novice": [],
+    "standard": [],
+    "expert": []
+  }
 }

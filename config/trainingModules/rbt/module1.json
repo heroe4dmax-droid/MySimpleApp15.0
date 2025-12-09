@@ -16,11 +16,6 @@
     "expert": { "intellect": 2, "wisdom": 2, "discipline": 1 }
   },
 
-  "unlock": {
-    "requiresModuleIds": [],
-    "minHeroLevel": 1
-  },
-
   "difficultyLabels": {
     "novice": "Novice",
     "standard": "Student",
@@ -33,79 +28,154 @@
     "expert": "Apply ABC analysis to real-world scenarios using function-based logic."
   },
 
-  "flashcardXP": {
-    "novice": 10,
-    "standard": 20,
-    "expert": 50,
-    "perCard": {
-      "qa": 10,
-      "fill": 15,
-      "mc": 20,
-      "scenario": 30
-    }
-  },
-
-  "flashcardUnlock": {
-    "novice": {
-      "level": 1
-    },
-    "standard": {
-      "level": 2,
-      "stats": { "intellect": 1, "wisdom": 1 }
-    },
-    "expert": {
-      "level": 3,
-      "stats": { "intellect": 2, "wisdom": 2, "discipline": 1 }
-    }
-  },
-
-  "flashcards": {
+  "sections": {
     "novice": [
-      { "id": "N1", "type": "qa", "question": "What are the three parts of the 3-term contingency?", "answer": "Antecedent → Behavior → Consequence" },
-      { "id": "N2", "type": "fill", "question": "The ______ happens before the behavior.", "answer": "antecedent" },
-      { "id": "N3", "type": "qa", "question": "What must a behavior definition be?", "answer": "Objective, observable, measurable" },
-      { "id": "N4", "type": "fill", "question": "A consequence that increases behavior is called ______.", "answer": "reinforcement" },
-      { "id": "N5", "type": "qa", "question": "Name one function of behavior.", "answer": "Escape, Attention, Tangible, or Sensory" },
-      { "id": "N6", "type": "qa", "question": "What is the purpose of ABC data?", "answer": "To identify patterns that suggest behavior function." },
-      { "id": "N7", "type": "fill", "question": "SD stands for ______ ______.", "answer": "discriminative stimulus" },
-      { "id": "N8", "type": "qa", "question": "What does a consequence affect?", "answer": "The future likelihood of the behavior" },
-      { "id": "N9", "type": "fill", "question": "Removing a stimulus to increase behavior is ______ reinforcement.", "answer": "negative" },
-      { "id": "N10", "type": "qa", "question": "What is an MO?", "answer": "A motivating operation that changes the value of a reinforcer." }
+      {
+        "id": "1.1",
+        "title": "Overview of ABC",
+        "xp": 25,
+        "statRequirements": { "intellect": 0, "wisdom": 0, "discipline": 0 },
+        "content": [
+          "Applied Behavior Analysis uses the Antecedent–Behavior–Consequence model.",
+          "Behavior is influenced by what happens before and after it."
+        ]
+      },
+      {
+        "id": "1.2",
+        "title": "Antecedents & Stimulus Control",
+        "xp": 30,
+        "statRequirements": { "intellect": 1, "wisdom": 0, "discipline": 0 },
+        "content": [
+          "Antecedents occur before behavior.",
+          "Stimulus control exists when behavior occurs in the presence of an SD."
+        ]
+      },
+      {
+        "id": "1.3",
+        "title": "Defining Behavior",
+        "xp": 30,
+        "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 0 },
+        "content": [
+          "Behavior must be observable, measurable, and objective.",
+          "Avoid emotional or subjective language."
+        ]
+      },
+      {
+        "id": "1.4",
+        "title": "Consequences",
+        "xp": 35,
+        "statRequirements": { "intellect": 2, "wisdom": 1, "discipline": 1 },
+        "content": [
+          "Consequences follow behavior.",
+          "They affect the future likelihood of behavior."
+        ]
+      },
+      {
+        "id": "1.5",
+        "title": "Functions of Behavior",
+        "xp": 35,
+        "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 1 },
+        "content": [
+          "Escape",
+          "Attention",
+          "Access to tangibles",
+          "Sensory stimulation"
+        ]
+      },
+      {
+        "id": "1.6",
+        "title": "Putting It All Together",
+        "xp": 45,
+        "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+        "content": [
+          "Analyze antecedents and consequences together.",
+          "Use patterns to determine function."
+        ]
+      }
     ],
 
     "standard": [
-      { "id": "S1", "type": "mc", "question": "Which is an antecedent?", "options": ["A reward", "A task instruction", "A tantrum", "A timeout"], "correctOptionIndex": 1 },
-      { "id": "S2", "type": "mc", "question": "Which is NOT a function of behavior?", "options": ["Escape", "Attention", "Stimulation", "Confusion"], "correctOptionIndex": 3 },
-      { "id": "S3", "type": "mc", "question": "Reinforcement always ______.", "options": ["Increases behavior", "Decreases behavior", "Stops behavior", "Has no effect"], "correctOptionIndex": 0 },
-      { "id": "S4", "type": "mc", "question": "Which is an example of a consequence?", "options": ["Instruction", "Location", "Praise", "Client’s age"], "correctOptionIndex": 2 },
-      { "id": "S5", "type": "mc", "question": "Which is a correct behavior definition?", "options": ["He felt frustrated", "She was angry", "He banged the table three times", "She looked upset"], "correctOptionIndex": 2 },
-      { "id": "S6", "type": "mc", "question": "A child screams to escape cleaning. Function?", "options": ["Attention", "Escape", "Tangible", "Sensory"], "correctOptionIndex": 1 },
-      { "id": "S7", "type": "mc", "question": "What is an SD?", "options": ["A punishment", "A signal that reinforcement is available", "A sensory behavior", "A reinforcer"], "correctOptionIndex": 1 },
-      { "id": "S8", "type": "mc", "question": "Which consequence reduces future behavior?", "options": ["Reinforcement", "Shaping", "Punishment", "Prompting"], "correctOptionIndex": 2 },
-      { "id": "S9", "type": "mc", "question": "Extinction means:", "options": ["Stopping reinforcement", "Punishing behavior", "Reinforcing new behavior", "Ignoring all behavior"], "correctOptionIndex": 0 },
-      { "id": "S10", "type": "mc", "question": "ABC stands for:", "options": ["Antecedent–Behavior–Consequence", "Action–Behavior–Control", "Antecedent–Baseline–Condition", "Analysis–Behavior–Condition"], "correctOptionIndex": 0 }
-    ],
-
-    "expert": [
-      { "id": "E1", "type": "scenario", "question": "Child cries → gets toy back. Function?", "answer": "Tangible", "explanation": "Crying gained access to item." },
-      { "id": "E2", "type": "scenario", "question": "Learner flops → work removed. Process?", "answer": "Negative reinforcement (escape).", "explanation": "Task removal strengthens behavior." },
-      { "id": "E3", "type": "scenario", "question": "Learner only responds to pointing. Issue?", "answer": "Stimulus control transfer failure.", "explanation": "Prompt controls behavior, not SD." },
-      { "id": "E4", "type": "scenario", "question": "RBT writes 'He was upset'. Problem?", "answer": "Not objective or measurable.", "explanation": "Must describe observable behavior." },
-      { "id": "E5", "type": "scenario", "question": "Child screams → gets iPad. Why behavior increases?", "answer": "Positive reinforcement.", "explanation": "Behavior resulted in tangible gain." },
-      { "id": "E6", "type": "scenario", "question": "Behavior occurs during hard tasks. What variable is involved?", "answer": "MO (value of escape).", "explanation": "Hard tasks increase escape motivation." },
-      { "id": "E7", "type": "scenario", "question": "Learner calls all animals 'dog'. What is this?", "answer": "Overgeneralization.", "explanation": "Generalization without discrimination." },
-      { "id": "E8", "type": "scenario", "question": "Tantrum decreases after reinforcement stops. Procedure?", "answer": "Extinction.", "explanation": "Reinforcement withheld." },
-      { "id": "E9", "type": "scenario", "question": "Behavior spikes once extinction begins. What is this?", "answer": "Extinction burst.", "explanation": "Temporary increase in behavior." },
-      { "id": "E10", "type": "scenario", "question": "Teacher calls name → child looks → praise. What strengthened behavior?", "answer": "Positive reinforcement.", "explanation": "Praise increased eye-contact behavior." }
+  {
+    "id": "1.S1",
+    "title": "Objective vs Subjective Definitions",
+    "xp": 45,
+    "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+    "content": [
+      "Objective definitions describe observable, measurable actions.",
+      "They avoid mentalistic or emotional language.",
+      "Subjective definitions rely on personal interpretation or inference.",
+      "Behavior plans require objective definitions to ensure consistency.",
+      "Two people should be able to observe the same behavior and agree."
     ]
   },
+  {
+    "id": "1.S2",
+    "title": "Components of the 3-Term Contingency",
+    "xp": 45,
+    "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+    "content": [
+      "Antecedent occurs before the behavior.",
+      "Behavior is observable and measurable.",
+      "Consequence follows the behavior.",
+      "Changing any component can affect responding.",
+      "This model is foundational to all ABA programs."
+    ]
+  },
+  {
+    "id": "1.S3",
+    "title": "Examples vs Non-Examples of Behavior",
+    "xp": 45,
+    "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+    "content": [
+      "Behaviors must be directly observable.",
+      "Thoughts and feelings are not behaviors.",
+      "Smiling, hitting, and running are behaviors.",
+      "Wanting, thinking, or remembering are not behaviors.",
+      "Correct identification improves data accuracy."
+    ]
+  }
+],
 
-  "sections": [
-    { "id": "1.1", "title": "Overview of ABC", "xp": 25, "statRequirements": { "intellect": 0, "wisdom": 0, "discipline": 0 }, "content": ["Applied Behavior Analysis uses the Antecedent–Behavior–Consequence model to understand why behavior occurs and how it is influenced."] },
-    { "id": "1.2", "title": "Antecedents & Stimulus Control", "xp": 30, "statRequirements": { "intellect": 1, "wisdom": 0, "discipline": 0 }, "content": ["Antecedents are events that occur before behavior. Stimulus control occurs when behavior happens more in the presence of a specific stimulus."] },
-    { "id": "1.3", "title": "Defining Behavior", "xp": 30, "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 0 }, "content": ["Behavior must be observable, measurable, and objective. Avoid emotional or subjective language when defining behavior."] },
-    { "id": "1.4", "title": "Consequences", "xp": 35, "statRequirements": { "intellect": 2, "wisdom": 1, "discipline": 1 }, "content": ["Consequences follow behavior and affect the likelihood of its future occurrence. Reinforcement increases behavior; punishment decreases it."] },
-    { "id": "1.5", "title": "Functions of Behavior", "xp": 35, "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 1 }, "content": ["Behaviors typically serve one of four functions: escape, attention, access to tangibles, or sensory stimulation."] },
-    { "id": "1.6", "title": "Putting It All Together", "xp": 45, "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 }, "content": ["By analyzing antecedents and consequences together, we can make informed decisions about behavior function and intervention strategies."] }
-  ]
+    "expert": [
+  {
+    "id": "1.E1",
+    "title": "Function vs Topography",
+    "xp": 60,
+    "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+    "content": [
+      "Topography describes the form of a behavior.",
+      "Function explains why the behavior occurs.",
+      "Different behaviors can serve the same function.",
+      "The same behavior can serve different functions.",
+      "Treatment focuses on function, not appearance."
+    ]
+  },
+  {
+    "id": "1.E2",
+    "title": "Predicting Behavior Change Using ABC",
+    "xp": 60,
+    "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+    "content": [
+      "Altering antecedents can prevent problem behavior.",
+      "Changing consequences can increase or decrease behavior.",
+      "Motivating operations influence behavior value.",
+      "Patterns emerge when ABC data is analyzed.",
+      "Effective intervention is proactive, not reactive."
+    ]
+  },
+  {
+    "id": "1.E3",
+    "title": "Behavioral Precision and Clinical Impact",
+    "xp": 60,
+    "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+    "content": [
+      "Clear definitions support reliable data collection.",
+      "Poor definitions lead to inconsistent implementation.",
+      "Precision improves interobserver agreement.",
+      "High-quality data enables ethical decision-making.",
+      "This skill separates technicians from tacticians."
+    ]
+  }
+]
+  }
 }

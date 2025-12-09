@@ -98,34 +98,170 @@
     ]
   },
 
-  "sections": [
-    {
-      "id": "6.1",
-      "title": "RBT Core Responsibilities",
-      "xp": 40,
-      "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
-      "content": "RBTs implement plans, collect accurate data, maintain confidentiality, avoid dual relationships, and report important changes to the BCBA."
-    },
-    {
-      "id": "6.2",
-      "title": "BCBA Responsibilities",
-      "xp": 40,
-      "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
-      "content": "BCBAs conduct assessments, design and modify programs, analyze data, and supervise RBTs."
-    },
-    {
-      "id": "6.3",
-      "title": "Confidentiality & Documentation",
-      "xp": 35,
-      "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 3 },
-      "content": "Client information must be protected, and documentation must be accurate, honest, and secure."
-    },
-    {
-      "id": "6.4",
-      "title": "Dual Relationships & Conflicts of Interest",
-      "xp": 35,
-      "statRequirements": { "intellect": 2, "wisdom": 3, "discipline": 3 },
-      "content": "Professionals must avoid dual relationships, inappropriate gifts, and conflicts of interest."
-    }
-  ]
+  "sections": {
+   "novice": [
+  {
+    "id": "6.N1",
+    "title": "Understanding the RBT Exam",
+    "xp": 30,
+    "statRequirements": { "intellect": 0, "wisdom": 0, "discipline": 0 },
+    "content": [
+      "The RBT exam is multiple choice.",
+      "Questions assess applied knowledge.",
+      "Not all questions are equally difficult.",
+      "Preparation improves confidence.",
+      "Calm thinking supports performance."
+    ]
+  },
+  {
+    "id": "6.N2",
+    "title": "Managing Test Anxiety",
+    "xp": 30,
+    "statRequirements": { "intellect": 0, "wisdom": 0, "discipline": 0 },
+    "content": [
+      "Anxiety is common before exams.",
+      "Deep breathing helps focus.",
+      "Preparation reduces stress.",
+      "Confidence grows with practice.",
+      "Staying calm improves accuracy."
+    ]
+  },
+  {
+    "id": "6.N3",
+    "title": "Exam-Day Readiness",
+    "xp": 30,
+    "statRequirements": { "intellect": 0, "wisdom": 0, "discipline": 0 },
+    "content": [
+      "Arrive early to the testing site.",
+      "Bring required identification.",
+      "Get adequate sleep before the exam.",
+      "Eat beforehand to maintain energy.",
+      "Follow testing center rules."
+    ]
+  }
+],
+"standard": [
+  {
+    "id": "6.S1",
+    "title": "Reading Questions Carefully",
+    "xp": 45,
+    "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+    "content": [
+      "Read each question completely.",
+      "Identify what the question is asking.",
+      "Look for key words and qualifiers.",
+      "Avoid adding extra information.",
+      "Answer based on best practice."
+    ]
+  },
+  {
+    "id": "6.S2",
+    "title": "Using Elimination Strategies",
+    "xp": 45,
+    "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+    "content": [
+      "Eliminate obviously incorrect answers.",
+      "Look for options that violate ethics.",
+      "Choose answers aligned with function.",
+      "Avoid absolute language when inappropriate.",
+      "Narrow choices before selecting."
+    ]
+  },
+  {
+    "id": "6.S3",
+    "title": "Time Management During the Exam",
+    "xp": 45,
+    "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+    "content": [
+      "Do not spend too long on one question.",
+      "Answer easier questions first.",
+      "Flag difficult items and return later.",
+      "Monitor remaining time.",
+      "Finish with time to review."
+    ]
+  },
+  {
+    "id": "6.S4",
+    "title": "What to Do When You Are Unsure",
+    "xp": 45,
+    "statRequirements": { "intellect": 1, "wisdom": 1, "discipline": 1 },
+    "content": [
+      "Never leave questions unanswered.",
+      "Make the best educated choice.",
+      "Use prior knowledge and logic.",
+      "Avoid changing answers without reason.",
+      "Trust your preparation."
+    ]
+  }
+],
+"expert": [
+  {
+    "id": "6.E1",
+    "title": "Recognizing Common Exam Traps",
+    "xp": 65,
+    "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+    "content": [
+      "Some answers sound correct but violate ethics.",
+      "Trap answers include excessive assumptions.",
+      "Extreme wording often signals incorrect options.",
+      "The best answer is not always the most complex.",
+      "Context determines correct judgment."
+    ]
+  },
+  {
+    "id": "6.E2",
+    "title": "Thinking Like a Behavior Analyst",
+    "xp": 65,
+    "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+    "content": [
+      "Focus on observable behavior.",
+      "Follow data and function.",
+      "Prioritize least restrictive options.",
+      "Respect client dignity.",
+      "Professional judgment guides choices."
+    ]
+  },
+  {
+    "id": "6.E3",
+    "title": "Maintaining Composure Under Pressure",
+    "xp": 65,
+    "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+    "content": [
+      "Pause and reset when stressed.",
+      "Breathing stabilizes thinking.",
+      "Confidence supports recall.",
+      "Composure improves accuracy.",
+      "Pressure does not define competence."
+    ]
+  },
+  {
+    "id": "6.E4",
+    "title": "Ethics as the Default Answer Filter",
+    "xp": 65,
+    "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+    "content": [
+      "When unsure, choose the ethical option.",
+      "Client welfare is the priority.",
+      "Supervision is chosen when uncertain.",
+      "Ethics override convenience.",
+      "Correct answers protect clients."
+    ]
+  },
+  {
+    "id": "6.E5",
+    "title": "Post-Exam Professional Mindset",
+    "xp": 65,
+    "statRequirements": { "intellect": 2, "wisdom": 2, "discipline": 2 },
+    "content": [
+      "Passing the exam is the beginning.",
+      "Continual learning is required.",
+      "Professionalism guides growth.",
+      "Confidence develops with experience.",
+      "Competence is built over time."
+    ]
+  }
+]
+
+
+  }
 }
